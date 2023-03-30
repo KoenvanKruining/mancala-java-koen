@@ -1,7 +1,7 @@
 package mancala.domain.bakken;
 
 public class Put extends Bak{
-    Put(){
+    public Put(){
         this.ballen=4;
     }
 }
