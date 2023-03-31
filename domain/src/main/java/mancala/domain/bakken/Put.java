@@ -5,5 +5,7 @@ public class Put extends Bak{
         this.ballen=4;
         }
 
-    public void doeZet(){}
+    public void doeZet(){
+        this.ballen=0;
+    }
 }

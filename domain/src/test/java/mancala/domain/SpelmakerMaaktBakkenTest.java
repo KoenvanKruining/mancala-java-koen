@@ -20,19 +20,33 @@ public class SpelmakerMaaktBakkenTest {
 
         Assertions.assertInstanceOf(Bak.class,speelbord[i]);
     }
-    @ParameterizedTest
-    @ValueSource(ints={0,7})
-    public void test0en7ZijnKalahas(int i){
+    @Test
+    public void testKalahasLiggen7UitElkaar(){
         Bak[] speelbord=Spelmaker.maakBord();
+        int i=0;
+        while (speelbord[i].getClass()!=Kalaha.class){
+            i++;
+        }
 
-        Assertions.assertInstanceOf(Kalaha.class,speelbord[i]);
+        Assertions.assertInstanceOf(Kalaha.class,speelbord[i+7]);
     }
 
     @ParameterizedTest
-    @ValueSource(ints={1,2,3,4,5,6,8,9,10,11,12,13})
-    public void testAlleBakjesNiet0of7ZijnPutten(int i){
+    @ValueSource(ints={0,1,2,3,4,5,6})
+    public void testBeideSpeelhelftenZijnGelijk(int i){
         Bak[] speelbord=Spelmaker.maakBord();
 
-        Assertions.assertInstanceOf(Put.class,speelbord[i]);
+        Assertions.assertEquals(speelbord[i].getClass(),speelbord[i+7].getClass());
+    }
+
+    @Test
+    public void testSpeelhelftHeeft6putten(){
+        Bak[] speelbord=Spelmaker.maakBord();
+        int aantalPutten=0;
+        for(int i=0;i<7;i++){
+            if(speelbord[i] instanceof Put) aantalPutten++;
+        }
+
+        Assertions.assertEquals(6,aantalPutten);
     }
 }

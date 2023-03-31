@@ -14,12 +14,12 @@ public class PutTest{
         Assertions.assertEquals(4,put.vraagAantalBallenOp());
     }
 
-    /*@Test
+    @Test
     public void testPutIsLeegNaZet(){
-        Bak[] speelbord= Spelmaker.maakBord();
+        Put put=new Put();
 
-        speelbord[1].Put.doeZet();
+        put.doeZet();
 
-        Assertions.assertEquals(0,speelbord[1].vraagAantalBallenOp());
-    }*/
+        Assertions.assertEquals(0,put.vraagAantalBallenOp());
+    }
 }
