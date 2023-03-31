@@ -6,6 +6,7 @@ public class Put extends Bak{
         }
 
     public void doeZet(){
-        this.ballen=0;
+        buurBak.ontvang(ballen);
+        ballen=0;
     }
 }

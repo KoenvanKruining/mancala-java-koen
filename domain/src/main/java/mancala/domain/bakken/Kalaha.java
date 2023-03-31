@@ -1,5 +1,3 @@
 package mancala.domain.bakken;
 
-public class Kalaha extends Bak{
-
-}
+public class Kalaha extends Bak{}
