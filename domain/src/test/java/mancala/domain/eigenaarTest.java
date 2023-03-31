@@ -20,9 +20,6 @@ public class eigenaarTest{
     public void eenEigenaarHeeftDeBeginBeurt(){
         Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
 
-        boolean heeftBeurt0=eigenaars[0].isEigenaarAanDeBeurt();
-        boolean heeftBeurt1=eigenaars[1].isEigenaarAanDeBeurt()
-
-        Assertions.assertTrue(heeftBeurt0 && !heeftBeurt1 || !heeftBeurt0 && heeftBeurt1);
+        Assertions.assertNotEquals(eigenaars[0].isEigenaarAanDeBeurt(),eigenaars[1].isEigenaarAanDeBeurt());
     }
 }
