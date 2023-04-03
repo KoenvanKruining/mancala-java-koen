@@ -2,7 +2,11 @@ package mancala.domain;
 
 public class Eigenaar {
     private boolean aanDeBeurt;
-    public Eigenaar tegenstander; //Dit is niet netjes. Moet ik nog op terugkomen
+    private Eigenaar tegenstander;
+
+    public void setTegenstander(Eigenaar tegenstander){
+        this.tegenstander=tegenstander;
+    }
 
     public Eigenaar(boolean beginBeurt){this.aanDeBeurt=beginBeurt;}
 

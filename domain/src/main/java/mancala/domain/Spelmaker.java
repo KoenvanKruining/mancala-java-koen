@@ -9,8 +9,8 @@ public class Spelmaker {
         eigenaar[0]=new Eigenaar(true);
         eigenaar[1]=new Eigenaar(false);
 
-        eigenaar[0].tegenstander=eigenaar[1];
-        eigenaar[1].tegenstander=eigenaar[0];
+        eigenaar[0].setTegenstander(eigenaar[1]);
+        eigenaar[1].setTegenstander(eigenaar[0]);
 
         return eigenaar;
     }
@@ -22,7 +22,7 @@ public class Spelmaker {
         }
         for(int i=0;i<speelbord.length;i++){
             int buurPositie=(i+1)%14;
-            speelbord[i].buurBak=speelbord[buurPositie];
+            speelbord[i].setBuurbak(speelbord[buurPositie]);
         }
 
         return speelbord;

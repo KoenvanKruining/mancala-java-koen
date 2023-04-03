@@ -3,11 +3,14 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public abstract class Bak {
-    protected int ballen;
-    public Bak buurBak; //Dit is niet netjes. Moet ik nog op terugkomen
-    protected final Eigenaar eigenaar;
+    int ballen;
+    Bak buurBak;
+    final Eigenaar eigenaar;
 
     public Bak(Eigenaar eigenaar){this.eigenaar=eigenaar;}
+    public void setBuurbak(Bak buur){
+        this.buurBak=buur;
+    }
     public int vraagAantalBallenOp(){return ballen;}
 
     protected void ontvang(int aantalBallen){
