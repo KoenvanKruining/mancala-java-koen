@@ -3,6 +3,7 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public class Put extends Bak{
+    private Put overbuurBak;
 
     public Put(Eigenaar eigenaar){
         super(eigenaar);
@@ -10,7 +11,9 @@ public class Put extends Bak{
     }
 
     public void doeZet(){
-        buurBak.ontvang(ballen);
-        ballen=0;
+        if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
+            buurBak.ontvang(ballen);
+            ballen=0;
+        }
     }
 }

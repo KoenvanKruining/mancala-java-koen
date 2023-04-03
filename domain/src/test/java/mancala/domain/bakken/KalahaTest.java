@@ -1,8 +1,10 @@
 package mancala.domain.bakken;
 
-import mancala.domain.Eigenaar;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import mancala.domain.Eigenaar;
+import mancala.domain.Spelmaker;
 public class KalahaTest {
     @Test
     public void testNieuweKalahaHeeft0Ballen(){

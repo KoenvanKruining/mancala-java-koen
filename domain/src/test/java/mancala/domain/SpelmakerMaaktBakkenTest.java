@@ -48,6 +48,7 @@ public class SpelmakerMaaktBakkenTest {
     public void testSpeelhelftHeeft6Putten(){
         Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
         Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+
         int aantalPutten=0;
         for(int i=0;i<7;i++){
             if(speelbord[i] instanceof Put) aantalPutten++;

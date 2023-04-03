@@ -46,8 +46,7 @@ public class zetTest {
         putten[4]=new Put(eigenaars[0]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
-        startput.doeZet();
+        putten[0].doeZet();
 
         Assertions.assertEquals(1,putten[1].vraagAantalBallenOp());
     }
@@ -64,8 +63,7 @@ public class zetTest {
         putten[4]=new Put(eigenaars[0]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
-        startput.doeZet();
+        putten[0].doeZet();
 
         Assertions.assertEquals(5,putten[j].vraagAantalBallenOp());
     }
@@ -107,9 +105,8 @@ public class zetTest {
         putten[4]=new Put(eigenaars[1]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
         boolean eigenaarHadBeurt=eigenaars[1].isEigenaarAanDeBeurt();
-        startput.doeZet();
+        putten[0].doeZet();
         boolean eigenaarHeeftBeurt=eigenaars[1].isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
@@ -125,9 +122,8 @@ public class zetTest {
         putten[4]=new Put(eigenaars[1]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
         boolean tegenstanderHadBeurt=eigenaars[0].isEigenaarAanDeBeurt();
-        startput.doeZet();
+        putten[0].doeZet();
         boolean tegenstanderHeeftBeurt=eigenaars[0].isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
@@ -144,8 +140,7 @@ public class zetTest {
         putten[4]=new Kalaha(eigenaars[0]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
-        startput.doeZet();
+        putten[0].doeZet();
 
         Assertions.assertTrue(putten[4].eigenaar.isEigenaarAanDeBeurt());
     }
@@ -161,8 +156,7 @@ public class zetTest {
         putten[4]=new Kalaha(eigenaars[0]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
-        startput.doeZet();
+        putten[0].doeZet();
 
         Assertions.assertNotEquals(eigenaars[0].isEigenaarAanDeBeurt(),eigenaars[1].isEigenaarAanDeBeurt());
     }
@@ -179,8 +173,7 @@ public class zetTest {
         putten[5]=new Put(eigenaars[1]);
         for(int i=0;i<5;i++) putten[i].buurBak=putten[i+1];
 
-        Put startput=(Put) putten[0];
-        startput.doeZet();
+        putten[0].doeZet();
 
         Assertions.assertEquals(0,putten[1].vraagAantalBallenOp());
     }

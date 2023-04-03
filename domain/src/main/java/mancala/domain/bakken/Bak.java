@@ -13,6 +13,8 @@ public abstract class Bak {
     }
     public int vraagAantalBallenOp(){return ballen;}
 
+    public void doeZet(){}
+
     protected void ontvang(int aantalBallen){
         this.ballen+=1;
         if(aantalBallen>1)  buurBak.ontvang(aantalBallen-1);
