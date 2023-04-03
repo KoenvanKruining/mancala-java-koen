@@ -5,9 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import mancala.domain.Eigenaar;
-
-public class eigenaarTest{
+public class EigenaarTest {
     @ParameterizedTest
     @ValueSource(ints={0,1})
     public void testErZijnTweeEigenaars(int i){

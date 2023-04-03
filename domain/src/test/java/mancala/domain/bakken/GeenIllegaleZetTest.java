@@ -7,7 +7,7 @@ import mancala.domain.Eigenaar;
 
 import static mancala.domain.Spelmaker.maakEigenaars;
 
-public class geenIllegaleZetTest {
+public class GeenIllegaleZetTest {
     @Test
     public void geenZetInBakAlsEigenaarNietAanDeBeurtIsTest1(){
         Eigenaar[] eigenaars=maakEigenaars();
@@ -34,6 +34,7 @@ public class geenIllegaleZetTest {
 
         Assertions.assertTrue(eigenaars[0].isEigenaarAanDeBeurt());
     }
+
     @Test
     public void geenZetInLegeBakTest1(){
         Eigenaar[] eigenaars=maakEigenaars();
@@ -46,9 +47,8 @@ public class geenIllegaleZetTest {
         putten[5].doeZet();
         putten[0].doeZet();
 
-        Assertions.assertTrue(eigenaars[0].isEigenaarAanDeBeurt());
+        Assertions.assertEquals(5,putten[1].vraagAantalBallenOp());
     }
-
     @Test
     public void geenZetInLegeBakTest2(){
         Eigenaar[] eigenaars=maakEigenaars();
@@ -61,7 +61,7 @@ public class geenIllegaleZetTest {
         putten[5].doeZet();
         putten[0].doeZet();
 
-        Assertions.assertEquals(5,putten[1].vraagAantalBallenOp());
+        Assertions.assertTrue(eigenaars[0].isEigenaarAanDeBeurt());
     }
 
     @Test
@@ -74,12 +74,10 @@ public class geenIllegaleZetTest {
         for(int i=0;i<10;i++) putten[i].buurBak=putten[i+1];
 
         putten[1].doeZet();
-        putten[6].doeZet();
         putten[5].doeZet();
 
-        Assertions.assertTrue(eigenaars[0].isEigenaarAanDeBeurt());
+        Assertions.assertEquals(4,putten[6].vraagAantalBallenOp());
     }
-
     @Test
     public void geenZetInKalahaTest2(){
         Eigenaar[] eigenaars=maakEigenaars();
@@ -90,8 +88,9 @@ public class geenIllegaleZetTest {
         for(int i=0;i<10;i++) putten[i].buurBak=putten[i+1];
 
         putten[1].doeZet();
+        putten[6].doeZet();
         putten[5].doeZet();
 
-        Assertions.assertEquals(4,putten[6].vraagAantalBallenOp());
+        Assertions.assertTrue(eigenaars[0].isEigenaarAanDeBeurt());
     }
 }

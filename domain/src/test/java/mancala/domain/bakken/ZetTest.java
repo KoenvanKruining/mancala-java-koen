@@ -9,7 +9,7 @@ import mancala.domain.Eigenaar;
 
 import static mancala.domain.Spelmaker.maakEigenaars;
 
-public class zetTest {
+public class ZetTest {
     @Test
     public void testPutIsLeegNaZet(){
         Eigenaar[] eigenaars=maakEigenaars();
