@@ -11,13 +11,16 @@ public abstract class Bak {
     public void setBuurbak(Bak buur){
         this.buurBak=buur;
     }
+
+    public void kiesOverbuurPut(Bak overbuurput){}
+    void kiesOverbuurputOok(Bak overbuurput){}
     public int vraagAantalBallenOp(){return ballen;}
 
     public void doeZet(){}
 
-    protected void ontvang(int aantalBallen){
-        this.ballen+=1;
-        if(aantalBallen>1)  buurBak.ontvang(aantalBallen-1);
-        if(aantalBallen==1) eigenaar.wisselBeurt();
-    }
+    abstract void ontvang(int aantalBallen);
+
+    abstract void ballenNaarKalaha(int ballen);
+
+    void putjePlunderen(){}
 }

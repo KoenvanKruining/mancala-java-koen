@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import mancala.domain.Eigenaar;
-
 import static mancala.domain.Spelmaker.maakEigenaars;
 
 public class GeenIllegaleZetTest {

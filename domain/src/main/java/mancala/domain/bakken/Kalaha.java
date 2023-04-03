@@ -13,4 +13,9 @@ public class Kalaha extends Bak{
             if (aantalBallen > 1) buurBak.ontvang(aantalBallen - 1);
         } else buurBak.ontvang(aantalBallen);
     }
+
+
+    void ballenNaarKalaha(int aantalBallen) {
+        this.ballen+=aantalBallen;
+    }
 }
