@@ -56,4 +56,13 @@ public class SpelmakerMaaktBakkenTest {
 
         Assertions.assertEquals(6,aantalPutten);
     }
+
+/*    @ParameterizedTest
+    @ValueSource(ints={0,1,2,3,4,5,6})
+    public void testTegenoverliggendePuttenHebbenVerschillendeEigenaars(int i){
+        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
+        Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+
+        Assertions.assertNotEquals(speelbord[i].eigenaar,speelbord[i+7].eigenaar);
+    }*/
 }

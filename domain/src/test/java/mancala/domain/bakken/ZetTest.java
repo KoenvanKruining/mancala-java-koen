@@ -105,9 +105,9 @@ public class ZetTest {
         putten[4]=new Put(eigenaars[1]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean eigenaarHadBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean eigenaarHadBeurt=eigenaars[0].isEigenaarAanDeBeurt();
         ((Put)putten[0]).doeZet();
-        boolean eigenaarHeeftBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean eigenaarHeeftBeurt=eigenaars[0].isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
     }
@@ -122,9 +122,9 @@ public class ZetTest {
         putten[4]=new Put(eigenaars[1]);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean tegenstanderHadBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean tegenstanderHadBeurt=eigenaars[1].isEigenaarAanDeBeurt();
         ((Put)putten[0]).doeZet();
-        boolean tegenstanderHeeftBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean tegenstanderHeeftBeurt=eigenaars[1].isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
     }

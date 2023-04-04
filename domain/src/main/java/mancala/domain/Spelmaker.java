@@ -15,15 +15,19 @@ public class Spelmaker {
         return eigenaar;
     }
     public static Bak[] maakBord(Eigenaar[] eigenaars){
-        Bak[] speelbord=new Bak[14];
+        Bak[] speelbord =new Bak[14];
+        Eigenaar eigenaar=eigenaars[0];
+
         for(int i=0;i<speelbord.length;i++) {
-            if(i%7==0) speelbord[i] = new Kalaha(eigenaars[0]);
-            else speelbord[i] = new Put(eigenaars[0]);
+            if(i%7==6){
+                speelbord[i] = new Kalaha(eigenaar);
+                eigenaar=eigenaar.vraagTegenstanderOp();
+            }
+            else speelbord[i] = new Put(eigenaar);
+
+            if(i>1) speelbord[i-1].setBuurbak(speelbord[i]);
         }
-        for(int i=0;i<speelbord.length;i++){
-            int buurPositie=(i+1)%14;
-            speelbord[i].setBuurbak(speelbord[buurPositie]);
-        }
+        speelbord[13].setBuurbak(speelbord[0]);
 
         return speelbord;
     }

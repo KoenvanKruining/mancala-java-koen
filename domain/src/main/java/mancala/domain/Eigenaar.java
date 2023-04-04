@@ -4,6 +4,7 @@ public class Eigenaar {
     private boolean aanDeBeurt;
     private Eigenaar tegenstander;
 
+    public Eigenaar vraagTegenstanderOp(){return tegenstander;}
     public void setTegenstander(Eigenaar tegenstander){
         this.tegenstander=tegenstander;
     }
