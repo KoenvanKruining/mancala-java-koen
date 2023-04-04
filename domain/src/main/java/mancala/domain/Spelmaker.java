@@ -29,6 +29,9 @@ public class Spelmaker {
         }
         speelbord[13].setBuurbak(speelbord[0]);
 
+        for(int i=0;i<speelbord.length/2-1;i++)
+            ((Put)speelbord[i]).kiesOverbuurPut(((Put)speelbord[12-i]));
+
         return speelbord;
     }
 

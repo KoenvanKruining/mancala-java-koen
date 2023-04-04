@@ -1,11 +1,11 @@
 package mancala.domain;
 
-import mancala.domain.bakken.Put;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static mancala.domain.Spelmaker.maakEigenaars;
 import mancala.domain.bakken.*;
+import mancala.domain.bakken.Put;
 public class PutjePlunderenTest {
     @Test
     public void testLaatsteBalInPutVanEigenaarGaatNaarKalaha(){
