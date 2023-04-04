@@ -15,11 +15,11 @@ public class PutjePlunderenTest {
         putten[5]=new Kalaha(eigenaars[0]);
         for(int i=6;i<12;i++) putten[i]=new Put(eigenaars[1]);
         for(int i=0;i<11;i++) putten[i].setBuurbak(putten[i+1]);
-        for(int i=0;i<5;i++) putten[i].kiesOverbuurPut(putten[10-i]);
+        for(int i=0;i<5;i++) ((Put)putten[i]).kiesOverbuurPut(((Put)putten[10-i]));
 
-        putten[4].doeZet();
-        putten[6].doeZet();
-        putten[0].doeZet();
+        ((Put)putten[4]).doeZet();
+        ((Put)putten[6]).doeZet();
+        ((Put)putten[0]).doeZet();
 
         Assertions.assertEquals(0,putten[4].vraagAantalBallenOp());
         Assertions.assertEquals(2,putten[5].vraagAantalBallenOp());
@@ -32,11 +32,11 @@ public class PutjePlunderenTest {
         putten[5]=new Kalaha(eigenaars[0]);
         for(int i=6;i<13;i++) putten[i]=new Put(eigenaars[1]);
         for(int i=0;i<12;i++) putten[i].setBuurbak(putten[i+1]);
-        for(int i=0;i<5;i++) putten[i].kiesOverbuurPut(putten[10-i]);
+        for(int i=0;i<5;i++) ((Put)putten[i]).kiesOverbuurPut(((Put)putten[10-i]));
 
-        putten[4].doeZet();
-        putten[7].doeZet();
-        putten[0].doeZet();
+        ((Put)putten[4]).doeZet();
+        ((Put)putten[7]).doeZet();
+        ((Put)putten[0]).doeZet();
 
         Assertions.assertEquals(0,putten[4].vraagAantalBallenOp());
         Assertions.assertEquals(0,putten[6].vraagAantalBallenOp());

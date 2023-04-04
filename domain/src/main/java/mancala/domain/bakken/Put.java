@@ -3,19 +3,19 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public class Put extends Bak{
-    private Bak overbuurPut;
+    private Put overbuurPut;
 
     public Put(Eigenaar eigenaar){
         super(eigenaar);
         this.ballen=4;
     }
 
-    public void kiesOverbuurPut(Bak overbuurput){
+    public void kiesOverbuurPut(Put overbuurput){
         this.overbuurPut=overbuurput;
         overbuurput.kiesOverbuurputOok(this);
     }
 
-    void kiesOverbuurputOok(Bak overbuurput){
+    void kiesOverbuurputOok(Put overbuurput){
         this.overbuurPut=overbuurput;
     }
 

@@ -12,15 +12,10 @@ public abstract class Bak {
         this.buurBak=buur;
     }
 
-    public void kiesOverbuurPut(Bak overbuurput){}
-    void kiesOverbuurputOok(Bak overbuurput){}
     public int vraagAantalBallenOp(){return ballen;}
-
-    public void doeZet(){}
 
     abstract void ontvang(int aantalBallen);
 
     abstract void ballenNaarKalaha(int ballen);
 
-    void putjePlunderen(){}
 }
