@@ -7,7 +7,7 @@ public class Kalaha extends Bak{
         super(eigenaar);
     }
 
-    protected void ontvang(int aantalBallen){
+    void ontvang(int aantalBallen){
         if(this.eigenaar.isEigenaarAanDeBeurt()) {
             this.ballen += 1;
             if (aantalBallen > 1) buurBak.ontvang(aantalBallen - 1);
@@ -16,4 +16,13 @@ public class Kalaha extends Bak{
 
 
     void ballenNaarKalaha(int aantalBallen) {this.ballen+=aantalBallen;}
+
+    boolean eindeChecker() {
+        return true;
+    }
+
+    void allesNaarKalaha(int aantalBallen){
+        ballen+=aantalBallen;
+    }
+    void allesNaarKalaha(){allesNaarKalaha(0);}
 }
