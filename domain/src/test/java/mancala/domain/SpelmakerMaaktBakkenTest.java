@@ -10,23 +10,19 @@ import mancala.domain.bakken.*;
 public class SpelmakerMaaktBakkenTest {
     @Test
     public void testSpelHeeft14Bakken(){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
-
-        Assertions.assertEquals(14,Spelmaker.maakBord(eigenaars).length);
+        Assertions.assertEquals(14,Spelmaker.maakBord().length);
     }
 
     @ParameterizedTest
     @ValueSource(ints={0,1,2,3,4,5,6,7,8,9,10,11,12,13})
     public void testAlleBakkenBestaan(int i){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
-        Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+        Bak[] speelbord=Spelmaker.maakBord();
 
         Assertions.assertInstanceOf(Bak.class,speelbord[i]);
     }
     @Test
     public void testKalahasLiggen7UitElkaar(){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
-        Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+        Bak[] speelbord=Spelmaker.maakBord();
         int i=0;
         while (speelbord[i].getClass()!=Kalaha.class){
             i++;
@@ -38,16 +34,14 @@ public class SpelmakerMaaktBakkenTest {
     @ParameterizedTest
     @ValueSource(ints={0,1,2,3,4,5,6})
     public void testBeideSpeelhelftenZijnGelijk(int i){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
-        Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+        Bak[] speelbord=Spelmaker.maakBord();
 
         Assertions.assertEquals(speelbord[i].getClass(),speelbord[i+7].getClass());
     }
 
     @Test
     public void testSpeelhelftHeeft6Putten(){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
-        Bak[] speelbord=Spelmaker.maakBord(eigenaars);
+        Bak[] speelbord=Spelmaker.maakBord();
 
         int aantalPutten=0;
         for(int i=0;i<7;i++){

@@ -14,7 +14,8 @@ public class Spelmaker {
 
         return eigenaar;
     }
-    public static Bak[] maakBord(Eigenaar[] eigenaars){
+    public static Bak[] maakBord(){
+        Eigenaar[] eigenaars=maakEigenaars();
         Bak[] speelbord =new Bak[14];
         Eigenaar eigenaar=eigenaars[0];
 
