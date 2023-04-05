@@ -22,7 +22,7 @@ public class BepaalWinnaarTest {
         ((Put)speelbord[0]).kiesOverbuurPut(((Put)speelbord[4]));
         ((Put)speelbord[1]).kiesOverbuurPut(((Put)speelbord[3]));
 
-        Assertions.assertEquals(Kalaha.speluitkomst.VERLOREN,((Kalaha)speelbord[2]).bepaalWinnaar());
+        Assertions.assertEquals(Kalaha.uitkomst.VERLOREN,((Kalaha)speelbord[2]).bepaalWinnaar());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class BepaalWinnaarTest {
 
         speelbord[0].allesNaarKalaha();
 
-        Assertions.assertEquals(Kalaha.speluitkomst.GELIJK,((Kalaha)speelbord[2]).bepaalWinnaar());
+        Assertions.assertEquals(Kalaha.uitkomst.GELIJK,((Kalaha)speelbord[2]).bepaalWinnaar());
     }
 
     @Test
@@ -66,6 +66,6 @@ public class BepaalWinnaarTest {
 
 
 
-        Assertions.assertEquals(Kalaha.speluitkomst.GEWONNEN,((Kalaha)speelbord[5]).bepaalWinnaar());
+        Assertions.assertEquals(Kalaha.uitkomst.GEWONNEN,((Kalaha)speelbord[5]).bepaalWinnaar());
     }
 }
