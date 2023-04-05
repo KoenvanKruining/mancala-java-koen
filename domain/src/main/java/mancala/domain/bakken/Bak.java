@@ -8,7 +8,7 @@ public abstract class Bak {
     final Eigenaar eigenaar;
 
     public Bak(Eigenaar eigenaar){this.eigenaar=eigenaar;}
-    public void setBuurbak(Bak buur){this.buurBak=buur;}
+    public void setBuurbak(Bak buur){buurBak=buur;}
 
     public int vraagAantalBallenOp(){return ballen;}
 
@@ -18,7 +18,7 @@ public abstract class Bak {
 
     abstract boolean eindeChecker();
 
-    abstract void allesNaarKalaha(int aantalBallen);
-    abstract void allesNaarKalaha();
+    abstract int allesNaarKalaha(int aantalBallen);
+    abstract int allesNaarKalaha();
 
 }

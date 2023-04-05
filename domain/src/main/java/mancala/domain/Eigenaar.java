@@ -7,11 +7,11 @@ public class Eigenaar {
     public Eigenaar vraagTegenstanderOp(){return tegenstander;}
 
     public Eigenaar(){
-        this.aanDeBeurt=true;
+        aanDeBeurt=true;
         this.tegenstander=new Eigenaar(this);
     }
     public Eigenaar(Eigenaar tegenstander){
-        this.aanDeBeurt=false;
+        aanDeBeurt=false;
         this.tegenstander=tegenstander;
     }
 

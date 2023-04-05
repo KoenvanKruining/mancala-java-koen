@@ -7,7 +7,7 @@ public class Put extends Bak{
 
     public Put(Eigenaar eigenaar){
         super(eigenaar);
-        this.ballen=4;
+        ballen=4;
     }
 
     public void kiesOverbuurPut(Put overbuurput){
@@ -15,7 +15,7 @@ public class Put extends Bak{
         overbuurput.kiesOverbuurputOok(this);
     }
 
-    void kiesOverbuurputOok(Put overbuurput){this.overbuurPut=overbuurput;}
+    void kiesOverbuurputOok(Put overbuurput){overbuurPut=overbuurput;}
 
     public void doeZet(){
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
@@ -26,11 +26,11 @@ public class Put extends Bak{
         }
     }
     void ontvang(int aantalBallen){
-        this.ballen+=1;
+        ballen+=1;
         if(aantalBallen>1) buurBak.ontvang(aantalBallen-1);
         if(aantalBallen==1) {
-            if(eigenaar.isEigenaarAanDeBeurt() && this.ballen==1) {
-                this.ballen+= overbuurPut.vraagAantalBallenOp();
+            if(eigenaar.isEigenaarAanDeBeurt() && ballen==1) {
+                ballen+= overbuurPut.vraagAantalBallenOp();
                 overbuurPut.putjePlunderen();
                 ballenNaarKalaha();
             }
@@ -38,23 +38,24 @@ public class Put extends Bak{
         }
     }
     void ballenNaarKalaha(){
-        buurBak.ballenNaarKalaha(this.ballen);
-        this.ballen=0;
+        buurBak.ballenNaarKalaha(ballen);
+        ballen=0;
     }
     void ballenNaarKalaha(int aantalBallen) {buurBak.ballenNaarKalaha(aantalBallen);}
 
-    void putjePlunderen(){this.ballen=0;}
+    void putjePlunderen(){ballen=0;}
 
     boolean eindeChecker() {
         if(this.ballen >0) return false;
         else return buurBak.eindeChecker();
     }
 
-    void allesNaarKalaha(int aantalBallen){
-        buurBak.allesNaarKalaha(ballen+aantalBallen);
+    int allesNaarKalaha(int aantalBallen){
+        int doortegevenballen=ballen;
         ballen=0;
+        return buurBak.allesNaarKalaha(doortegevenballen+aantalBallen);
     }
-    void allesNaarKalaha(){
-        allesNaarKalaha(0);
+    int allesNaarKalaha(){
+        return allesNaarKalaha(0);
     }
 }
