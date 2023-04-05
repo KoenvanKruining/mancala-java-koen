@@ -8,9 +8,7 @@ public abstract class Bak {
     final Eigenaar eigenaar;
 
     public Bak(Eigenaar eigenaar){this.eigenaar=eigenaar;}
-    public void setBuurbak(Bak buur){
-        this.buurBak=buur;
-    }
+    public void setBuurbak(Bak buur){this.buurBak=buur;}
 
     public int vraagAantalBallenOp(){return ballen;}
 

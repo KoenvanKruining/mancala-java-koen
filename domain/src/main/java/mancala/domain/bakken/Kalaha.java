@@ -15,7 +15,5 @@ public class Kalaha extends Bak{
     }
 
 
-    void ballenNaarKalaha(int aantalBallen) {
-        this.ballen+=aantalBallen;
-    }
+    void ballenNaarKalaha(int aantalBallen) {this.ballen+=aantalBallen;}
 }

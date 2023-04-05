@@ -16,10 +16,10 @@ public class Spelmaker {
 
             if(i>1) speelbord[i-1].setBuurbak(speelbord[i]);
         }
-        speelbord[13].setBuurbak(speelbord[0]);
+        speelbord[speelbord.length-1].setBuurbak(speelbord[0]);
 
         for(int i=0;i<speelbord.length/2-1;i++)
-            ((Put)speelbord[i]).kiesOverbuurPut(((Put)speelbord[12-i]));
+            ((Put)speelbord[i]).kiesOverbuurPut(((Put)speelbord[speelbord.length-2-i]));
 
         return speelbord;
     }

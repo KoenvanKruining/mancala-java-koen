@@ -15,9 +15,7 @@ public class Put extends Bak{
         overbuurput.kiesOverbuurputOok(this);
     }
 
-    void kiesOverbuurputOok(Put overbuurput){
-        this.overbuurPut=overbuurput;
-    }
+    void kiesOverbuurputOok(Put overbuurput){this.overbuurPut=overbuurput;}
 
     public void doeZet(){
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
