@@ -2,22 +2,20 @@ package mancala.domain;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class EigenaarTest {
-    @ParameterizedTest
-    @ValueSource(ints={0,1})
-    public void testErZijnTweeEigenaars(int i){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
+    @Test
+    public void testErZijnTweeEigenaars(){
+        Eigenaar eigenaar=new Eigenaar();
 
-        Assertions.assertInstanceOf(Eigenaar.class,eigenaars[i]);
+        Assertions.assertInstanceOf(Eigenaar.class,eigenaar);
+        Assertions.assertInstanceOf(Eigenaar.class,eigenaar.vraagTegenstanderOp());
     }
 
     @Test
     public void eenEigenaarHeeftDeBeginBeurt(){
-        Eigenaar[] eigenaars=Spelmaker.maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
 
-        Assertions.assertNotEquals(eigenaars[0].isEigenaarAanDeBeurt(),eigenaars[1].isEigenaarAanDeBeurt());
+        Assertions.assertNotEquals(eigenaar.isEigenaarAanDeBeurt(),eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt());
     }
 }

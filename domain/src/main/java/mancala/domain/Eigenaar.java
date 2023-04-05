@@ -2,14 +2,18 @@ package mancala.domain;
 
 public class Eigenaar {
     private boolean aanDeBeurt;
-    private Eigenaar tegenstander;
+    private final Eigenaar tegenstander;
 
     public Eigenaar vraagTegenstanderOp(){return tegenstander;}
-    public void setTegenstander(Eigenaar tegenstander){
+
+    public Eigenaar(){
+        this.aanDeBeurt=true;
+        this.tegenstander=new Eigenaar(this);
+    }
+    public Eigenaar(Eigenaar tegenstander){
+        this.aanDeBeurt=false;
         this.tegenstander=tegenstander;
     }
-
-    public Eigenaar(boolean beginBeurt){this.aanDeBeurt=beginBeurt;}
 
     public boolean isEigenaarAanDeBeurt(){return aanDeBeurt;}
 

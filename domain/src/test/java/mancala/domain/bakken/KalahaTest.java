@@ -7,7 +7,7 @@ import mancala.domain.Eigenaar;
 public class KalahaTest {
     @Test
     public void testNieuweKalahaHeeft0Ballen(){
-        Eigenaar eigenaar=new Eigenaar(true);
+        Eigenaar eigenaar=new Eigenaar();
         Kalaha kalaha=new Kalaha(eigenaar);
 
         Assertions.assertEquals(0,kalaha.vraagAantalBallenOp());

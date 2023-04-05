@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class PutTest{
     @Test
     public void testNieuwePutHeeft4Ballen(){
-        Eigenaar eigenaar=new Eigenaar(true);
+        Eigenaar eigenaar=new Eigenaar();
         Put put=new Put(eigenaar);
 
         Assertions.assertEquals(4,put.vraagAantalBallenOp());

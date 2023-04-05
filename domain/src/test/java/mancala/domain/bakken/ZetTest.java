@@ -7,14 +7,13 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import mancala.domain.Eigenaar;
 
-import static mancala.domain.Spelmaker.maakEigenaars;
 
 public class ZetTest {
     @Test
     public void testPutIsLeegNaZet(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaars[0]);
+        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         putten[0].doeZet();
@@ -25,9 +24,9 @@ public class ZetTest {
     @ParameterizedTest
     @ValueSource(ints={1,2,3,4})
     public void behoudVanBallen(int putPositie){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaars[0]);
+        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         putten[0].doeZet();
@@ -37,13 +36,13 @@ public class ZetTest {
 
     @Test
     public void kalahaOntvangtCorrectVanEigenaar(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Kalaha(eigenaars[0]);
-        putten[2]=new Put(eigenaars[0]);
-        putten[3]=new Put(eigenaars[0]);
-        putten[4]=new Put(eigenaars[0]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Kalaha(eigenaar);
+        putten[2]=new Put(eigenaar);
+        putten[3]=new Put(eigenaar);
+        putten[4]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         ((Put)putten[0]).doeZet();
@@ -54,13 +53,13 @@ public class ZetTest {
     @ParameterizedTest
     @ValueSource(ints={2,3,4})
     public void kalahaGeeftCorrectDoorVanEigenaar(int j){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Kalaha(eigenaars[0]);
-        putten[2]=new Put(eigenaars[0]);
-        putten[3]=new Put(eigenaars[0]);
-        putten[4]=new Put(eigenaars[0]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Kalaha(eigenaar);
+        putten[2]=new Put(eigenaar);
+        putten[3]=new Put(eigenaar);
+        putten[4]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         ((Put)putten[0]).doeZet();
@@ -69,75 +68,75 @@ public class ZetTest {
     }
     @Test
     public void testEigenaarWisseltBeurtNaZet(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaars[0]);
+        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean eigenaarHadBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean eigenaarHadBeurt=eigenaar.isEigenaarAanDeBeurt();
         putten[0].doeZet();
-        boolean eigenaarHeeftBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean eigenaarHeeftBeurt=eigenaar.isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
     }
 
     @Test
     public void testTegenstanderWisseltBeurtNaZet(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaars[0]);
+        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean tegenstanderHadBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean tegenstanderHadBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
         putten[0].doeZet();
-        boolean tegenstanderHeeftBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean tegenstanderHeeftBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
     }
     @Test
     public void testEigenaarWisseltBeurtNaZetMetKalahaErtussen(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Put(eigenaars[0]);
-        putten[2]=new Kalaha(eigenaars[0]);
-        putten[3]=new Put(eigenaars[1]);
-        putten[4]=new Put(eigenaars[1]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Put(eigenaar);
+        putten[2]=new Kalaha(eigenaar);
+        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
+        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean eigenaarHadBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean eigenaarHadBeurt=eigenaar.isEigenaarAanDeBeurt();
         ((Put)putten[0]).doeZet();
-        boolean eigenaarHeeftBeurt=eigenaars[0].isEigenaarAanDeBeurt();
+        boolean eigenaarHeeftBeurt=eigenaar.isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
     }
     @Test
     public void testTegenstanderWisseltBeurtNaZetMetKalahaErtussen(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Put(eigenaars[0]);
-        putten[2]=new Kalaha(eigenaars[0]);
-        putten[3]=new Put(eigenaars[1]);
-        putten[4]=new Put(eigenaars[1]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Put(eigenaar);
+        putten[2]=new Kalaha(eigenaar);
+        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
+        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
-        boolean tegenstanderHadBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean tegenstanderHadBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
         ((Put)putten[0]).doeZet();
-        boolean tegenstanderHeeftBeurt=eigenaars[1].isEigenaarAanDeBeurt();
+        boolean tegenstanderHeeftBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
     }
 
     @Test
     public void testGeenBeurtwisselIndienLaatsteBalInEigenKalaha1(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Put(eigenaars[0]);
-        putten[2]=new Put(eigenaars[0]);
-        putten[3]=new Put(eigenaars[0]);
-        putten[4]=new Kalaha(eigenaars[0]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Put(eigenaar);
+        putten[2]=new Put(eigenaar);
+        putten[3]=new Put(eigenaar);
+        putten[4]=new Kalaha(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         ((Put)putten[0]).doeZet();
@@ -147,30 +146,30 @@ public class ZetTest {
 
     @Test
     public void testGeenBeurtwisselIndienLaatsteBalInEigenKalaha2(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Kalaha(eigenaars[0]);
-        putten[2]=new Put(eigenaars[0]);
-        putten[3]=new Put(eigenaars[0]);
-        putten[4]=new Kalaha(eigenaars[0]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Kalaha(eigenaar);
+        putten[2]=new Put(eigenaar);
+        putten[3]=new Put(eigenaar);
+        putten[4]=new Kalaha(eigenaar);
         for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
 
         ((Put)putten[0]).doeZet();
 
-        Assertions.assertNotEquals(eigenaars[0].isEigenaarAanDeBeurt(),eigenaars[1].isEigenaarAanDeBeurt());
+        Assertions.assertNotEquals(eigenaar.isEigenaarAanDeBeurt(),eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt());
     }
 
     @Test
     public void testGeenBalInKalahaVanTegenstander(){
-        Eigenaar[] eigenaars=maakEigenaars();
+        Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[6];
-        putten[0]=new Put(eigenaars[0]);
-        putten[1]=new Kalaha(eigenaars[1]);
-        putten[2]=new Put(eigenaars[1]);
-        putten[3]=new Put(eigenaars[1]);
-        putten[4]=new Put(eigenaars[1]);
-        putten[5]=new Put(eigenaars[1]);
+        putten[0]=new Put(eigenaar);
+        putten[1]=new Kalaha(eigenaar.vraagTegenstanderOp());
+        putten[2]=new Put(eigenaar.vraagTegenstanderOp());
+        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
+        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
+        putten[5]=new Put(eigenaar.vraagTegenstanderOp());
         for(int i=0;i<5;i++) putten[i].buurBak=putten[i+1];
 
         ((Put)putten[0]).doeZet();
