@@ -18,4 +18,14 @@ public class EigenaarTest {
 
         Assertions.assertNotEquals(eigenaar.isEigenaarAanDeBeurt(),eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt());
     }
+
+    @Test
+    public void testEigenaarKanSpelBeeindigen(){
+        Eigenaar eigenaar=new Eigenaar();
+
+        eigenaar.beeindigSpel();
+
+        Assertions.assertFalse(eigenaar.isEigenaarAanDeBeurt());
+        Assertions.assertFalse(eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt());
+    }
 }

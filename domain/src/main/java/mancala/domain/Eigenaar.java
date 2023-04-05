@@ -22,4 +22,10 @@ public class Eigenaar {
         tegenstander.wisselBeurtOok();
     }
     private void wisselBeurtOok(){aanDeBeurt= !aanDeBeurt;}
+
+    public void beeindigSpel(){
+        aanDeBeurt=false;
+        tegenstander.beeindigSpelOok();
+    }
+    private void beeindigSpelOok(){aanDeBeurt=false;}
 }

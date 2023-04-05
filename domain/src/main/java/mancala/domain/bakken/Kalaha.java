@@ -24,6 +24,8 @@ public class Kalaha extends Bak{
     }
     public uitkomst bepaalWinnaar(){
         int eindstandTegenstander=buurBak.allesNaarKalaha();
+        eigenaar.beeindigSpel();
+
         if(ballen>eindstandTegenstander) return uitkomst.GEWONNEN;
         if(ballen==eindstandTegenstander) return uitkomst.GELIJK;
         else return uitkomst.VERLOREN;
