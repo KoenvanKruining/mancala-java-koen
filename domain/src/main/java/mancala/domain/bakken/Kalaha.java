@@ -19,9 +19,7 @@ public class Kalaha extends Bak{
 
     void ballenNaarKalaha(int aantalBallen) {ballen+=aantalBallen;}
 
-    boolean eindeChecker() {
-        return true;
-    }
+    public boolean eindeChecker() {return true;}
     public uitkomst bepaalWinnaar(){
         int eindstandTegenstander=buurBak.allesNaarKalaha();
         eigenaar.beeindigSpel();

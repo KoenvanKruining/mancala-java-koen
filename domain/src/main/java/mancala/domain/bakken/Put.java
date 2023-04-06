@@ -22,7 +22,6 @@ public class Put extends Bak{
             int doortegevenballen=ballen;
             ballen=0;
             buurBak.ontvang(doortegevenballen);
-
         }
     }
     void ontvang(int aantalBallen){
@@ -45,7 +44,7 @@ public class Put extends Bak{
 
     void putjePlunderen(){ballen=0;}
 
-    boolean eindeChecker() {
+    public boolean eindeChecker() {
         if(this.ballen >0) return false;
         else return buurBak.eindeChecker();
     }

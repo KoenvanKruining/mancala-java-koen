@@ -18,9 +18,11 @@ public class Spelmaker {
         }
         speelbord[speelbord.length-1].setBuurbak(speelbord[0]);
 
-        for(int i=0;i<speelbord.length/2-1;i++)
-            ((Put)speelbord[i]).kiesOverbuurPut(((Put)speelbord[speelbord.length-2-i]));
-
+        for(int i=0;i<speelbord.length/2-1;i++) {
+            ((Put) speelbord[i]).kiesOverbuurPut(((Put) speelbord[speelbord.length - 2 - i]));
+        }
+        eigenaar.startput=((Put)speelbord[0]);
+        eigenaar.vraagTegenstanderOp().startput=((Put)speelbord[7]);
         return speelbord;
     }
 

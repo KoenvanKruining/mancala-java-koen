@@ -16,7 +16,7 @@ public abstract class Bak {
 
     abstract void ballenNaarKalaha(int ballen);
 
-    abstract boolean eindeChecker();
+    public abstract boolean eindeChecker();
 
     abstract int allesNaarKalaha(int aantalBallen);
     abstract int allesNaarKalaha();
