@@ -32,11 +32,8 @@ public class Put extends Bak{
         ballen+=1;
         if(aantalBallen>1) buurBak.ontvang(aantalBallen-1);
         if(aantalBallen==1) {
-            if(eigenaar.isEigenaarAanDeBeurt() && ballen==1) {
-                ballen+= overbuurPut.vraagAantalBallenOp();
-                overbuurPut.putjePlunderen();
-                ballenNaarKalaha();
-            }
+            if(eigenaar.isEigenaarAanDeBeurt() && ballen==1) putjePlunderen();
+
             eigenaar.wisselBeurt();
         }
     }
@@ -46,12 +43,13 @@ public class Put extends Bak{
     }
     void ballenNaarKalaha(int aantalBallen) {buurBak.ballenNaarKalaha(aantalBallen);}
 
-    void putjePlunderen(){ballen=0;}
-
-    public boolean eindeChecker() {
-        if(this.ballen >0) return false;
-        else return buurBak.eindeChecker();
+    void putjePlunderen(){
+        ballen+= overbuurPut.vraagAantalBallenOp();
+        overbuurPut.ballen=0;
+        ballenNaarKalaha();
     }
+
+    public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
     public uitkomst bepaalWinnaar(){
         if(buurBak.eigenaar==eigenaar) return buurBak.bepaalWinnaar();
