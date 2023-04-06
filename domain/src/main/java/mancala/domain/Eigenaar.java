@@ -27,7 +27,7 @@ public class Eigenaar {
     }
     private void wisselBeurtOok(){aanDeBeurt= !aanDeBeurt;}
 
-    public boolean isSpelVoorbij(){
+    public boolean isSpelVoorbij() throws NullPointerException{
         if(aanDeBeurt)return startput.eindeChecker();
         else return vraagTegenstanderOp().startput.eindeChecker();
     }

@@ -4,7 +4,6 @@ import mancala.domain.Eigenaar;
 
 public class Kalaha extends Bak{
 
-    enum uitkomst{GEWONNEN,VERLOREN,GELIJK}
     public Kalaha(Eigenaar eigenaar) {
         super(eigenaar);
     }
@@ -21,12 +20,14 @@ public class Kalaha extends Bak{
 
     public boolean eindeChecker() {return true;}
     public uitkomst bepaalWinnaar(){
-        int eindstandTegenstander=buurBak.allesNaarKalaha();
-        eigenaar.beeindigSpel();
+        if(eigenaar.isEigenaarAanDeBeurt()) {
+            int eindstandTegenstander = buurBak.allesNaarKalaha();
+            eigenaar.beeindigSpel();
 
-        if(ballen>eindstandTegenstander) return uitkomst.GEWONNEN;
-        if(ballen==eindstandTegenstander) return uitkomst.GELIJK;
-        else return uitkomst.VERLOREN;
+            if (ballen > eindstandTegenstander) return uitkomst.GEWONNEN;
+            if (ballen == eindstandTegenstander) return uitkomst.GELIJK;
+            else return uitkomst.VERLOREN;
+            } else return inverteerWinnaar(buurBak.bepaalWinnaar());
     }
     int allesNaarKalaha(int aantalBallen){
         ballen+=aantalBallen;

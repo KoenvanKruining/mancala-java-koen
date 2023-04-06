@@ -3,6 +3,7 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public abstract class Bak {
+    enum uitkomst{GEWONNEN,VERLOREN,GELIJK}
     int ballen;
     Bak buurBak;
     final Eigenaar eigenaar;
@@ -18,7 +19,20 @@ public abstract class Bak {
 
     public abstract boolean eindeChecker();
 
-    abstract int allesNaarKalaha(int aantalBallen);
+    public abstract uitkomst bepaalWinnaar();
+
+    uitkomst inverteerWinnaar(uitkomst buuruitkomst){
+        return switch (buuruitkomst) {
+            case VERLOREN:
+                yield uitkomst.GEWONNEN;
+            case GEWONNEN:
+                yield uitkomst.VERLOREN;
+            case GELIJK:
+                yield uitkomst.GELIJK;
+        };
+    }
+
     abstract int allesNaarKalaha();
+    abstract int allesNaarKalaha(int aantalBallen);
 
 }
