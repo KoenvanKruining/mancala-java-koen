@@ -3,18 +3,18 @@ package mancala.domain;
 import mancala.domain.bakken.*;
 
 public class Spelmaker {
-    public static Bak[] maakBord(){
-        Bak[] speelbord =new Bak[14];
+    public static Bak[] maakBord(int aantalputtenperspeler){
+        Bak[] speelbord =new Bak[2*aantalputtenperspeler +2];
         Eigenaar eigenaar=new Eigenaar();
 
         for(int i=0;i<speelbord.length;i++) {
-            if(i%7==6){
+            if(i%(aantalputtenperspeler+1)==aantalputtenperspeler){
                 speelbord[i] = new Kalaha(eigenaar);
                 eigenaar=eigenaar.vraagTegenstanderOp();
             }
             else speelbord[i] = new Put(eigenaar);
 
-            if(i>1) speelbord[i-1].setBuurbak(speelbord[i]);
+            if(i>0) speelbord[i-1].setBuurbak(speelbord[i]);
         }
         speelbord[speelbord.length-1].setBuurbak(speelbord[0]);
 
@@ -22,8 +22,9 @@ public class Spelmaker {
             ((Put) speelbord[i]).kiesOverbuurPut(((Put) speelbord[speelbord.length - 2 - i]));
         }
         eigenaar.startput=((Put)speelbord[0]);
-        eigenaar.vraagTegenstanderOp().startput=((Put)speelbord[7]);
+        eigenaar.vraagTegenstanderOp().startput=((Put)speelbord[aantalputtenperspeler+1]);
+
         return speelbord;
     }
-
+    public static Bak[] maakBord() {return maakBord(6);}
 }

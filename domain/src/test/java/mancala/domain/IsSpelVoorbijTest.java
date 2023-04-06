@@ -6,10 +6,12 @@ import mancala.domain.bakken.Put;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static mancala.domain.Spelmaker.maakBord;
+
 public class IsSpelVoorbijTest {
     @Test
     public void testSpelisNietVoorbijBijBallenInDeStartput(){
-        Bak[] speelbord=new Bak[6];
+        Bak[] speelbord=maakBord(2);
         Eigenaar eigenaar=new Eigenaar();
         speelbord[0]=new Put(eigenaar);
         speelbord[1]=new Put(eigenaar);
