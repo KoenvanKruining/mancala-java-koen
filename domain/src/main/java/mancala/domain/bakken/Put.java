@@ -20,6 +20,7 @@ public class Put extends Bak{
     void kiesOverbuurputOok(Put overbuurput){overbuurPut=overbuurput;}
 
     public void kiesStartPut(Put startput){startPut=startput;}
+    public void kiesKalaha(Kalaha eigenKalaha){kalaha=eigenKalaha;}
 
     public void doeZet(){
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
@@ -27,7 +28,12 @@ public class Put extends Bak{
             ballen=0;
             buurBak.ontvang(doortegevenballen);
 
-            if(statusChecker()) buurBak.bepaalWinnaar();
+            if(statusChecker()) {
+                if(eigenaar.isEigenaarAanDeBeurt()) kalaha.bepaalWinnaar();
+                else {
+                    inverteerWinnaar(overbuurPut.kalaha.bepaalWinnaar());
+                }
+            }
         }
     }
     void ontvang(int aantalBallen){
@@ -58,10 +64,6 @@ public class Put extends Bak{
 
     public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
-    public uitkomst bepaalWinnaar(){
-        if(buurBak.eigenaar==eigenaar) return buurBak.bepaalWinnaar();
-        else return inverteerWinnaar(buurBak.bepaalWinnaar());
-    }
 
     int allesNaarKalaha(int aantalBallen){
         int doortegevenballen=ballen;

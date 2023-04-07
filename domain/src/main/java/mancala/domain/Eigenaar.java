@@ -1,12 +1,8 @@
 package mancala.domain;
 
-import mancala.domain.bakken.Put;
-
 public class Eigenaar {
     private boolean aanDeBeurt;
     private final Eigenaar tegenstander;
-
-    Put startput;
 
     public Eigenaar vraagTegenstanderOp(){return tegenstander;}
 
@@ -26,11 +22,6 @@ public class Eigenaar {
         tegenstander.wisselBeurtOok();
     }
     private void wisselBeurtOok(){aanDeBeurt= !aanDeBeurt;}
-
-    public boolean isSpelVoorbij() throws NullPointerException{
-        if(aanDeBeurt)return startput.eindeChecker();
-        else return vraagTegenstanderOp().startput.eindeChecker();
-    }
 
     public void beeindigSpel(){
         aanDeBeurt=false;
