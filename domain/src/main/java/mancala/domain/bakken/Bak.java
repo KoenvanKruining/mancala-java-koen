@@ -17,7 +17,7 @@ public abstract class Bak {
 
     abstract void ballenNaarKalaha(int ballen);
 
-    public abstract boolean eindeChecker();
+    abstract boolean eindeChecker();
 
     uitkomst inverteerWinnaar(uitkomst buuruitkomst){
         return switch (buuruitkomst) {

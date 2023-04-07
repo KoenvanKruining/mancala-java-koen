@@ -60,7 +60,7 @@ public class Put extends Bak{
         else return overbuurPut.startPut.eindeChecker();
     }
 
-    public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
+    boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
 
     int allesNaarKalaha(int aantalBallen){
