@@ -39,7 +39,7 @@ public class Put extends Bak{
     }
     void ballenNaarKalaha(int aantalBallen) {buurBak.ballenNaarKalaha(aantalBallen);}
 
-    void putjePlunderen(){
+    private void putjePlunderen(){
         ballen+= overbuurPut.vraagAantalBallenOp();
         overbuurPut.ballen=0;
         ballenNaarKalaha();
