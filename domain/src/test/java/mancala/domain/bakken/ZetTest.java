@@ -32,35 +32,21 @@ public class ZetTest {
 
     @Test
     public void kalahaHoudtEenBalVastAlsEigenaarAanZet(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Kalaha(eigenaar);
-        putten[2]=new Put(eigenaar);
-        putten[3]=new Put(eigenaar);
-        putten[4]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord(3);
 
-        ((Put)putten[0]).doeZet();
+        ((Put)spelbord[2]).doeZet();
 
-        Assertions.assertEquals(1,putten[1].vraagAantalBallenOp());
+        Assertions.assertEquals(1,spelbord[3].vraagAantalBallenOp());
     }
 
     @ParameterizedTest
-    @ValueSource(ints={2,3,4})
+    @ValueSource(ints={4,5,6})
     public void kalahaGeeftAllesMinEenAlsVanEigenaarAanZet(int j){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Kalaha(eigenaar);
-        putten[2]=new Put(eigenaar);
-        putten[3]=new Put(eigenaar);
-        putten[4]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord(3);
 
-        ((Put)putten[0]).doeZet();
+        ((Put)spelbord[2]).doeZet();
 
-        Assertions.assertEquals(5,putten[j].vraagAantalBallenOp());
+        Assertions.assertEquals(5,spelbord[j].vraagAantalBallenOp());
     }
     @Test
     public void testEigenaarWisseltBeurtNaZet(){
@@ -126,19 +112,11 @@ public class ZetTest {
 
     @Test
     public void testGeenBalInKalahaVanTegenstander(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[6];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Kalaha(eigenaar.vraagTegenstanderOp());
-        putten[2]=new Put(eigenaar.vraagTegenstanderOp());
-        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
-        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
-        putten[5]=new Put(eigenaar.vraagTegenstanderOp());
-        for(int i=0;i<5;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord(2);
 
-        ((Put)putten[0]).doeZet();
+        ((Put)spelbord[1]).doeZet();
 
-        Assertions.assertEquals(0,putten[1].vraagAantalBallenOp());
+        Assertions.assertEquals(0,spelbord[5].vraagAantalBallenOp());
     }
 }
 
