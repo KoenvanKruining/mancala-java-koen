@@ -7,31 +7,27 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import mancala.domain.Eigenaar;
 
+import static mancala.domain.Spelmaker.maakBord;
+
 
 public class ZetTest {
     @Test
     public void testPutIsLeegNaZet(){
-        Eigenaar eigenaar=new Eigenaar();
-        Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord();
 
-        putten[0].doeZet();
+        ((Put)spelbord[0]).doeZet();
 
-        Assertions.assertEquals(0,putten[0].vraagAantalBallenOp());
+        Assertions.assertEquals(0,spelbord[0].vraagAantalBallenOp());
     }
 
     @ParameterizedTest
     @ValueSource(ints={1,2,3,4})
     public void behoudVanBallen(int putPositie){
-        Eigenaar eigenaar=new Eigenaar();
-        Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord();
 
-        putten[0].doeZet();
+        ((Put)spelbord[0]).doeZet();
 
-        Assertions.assertEquals(5,putten[putPositie].vraagAantalBallenOp());
+        Assertions.assertEquals(5,spelbord[putPositie].vraagAantalBallenOp());
     }
 
     @Test
@@ -68,96 +64,64 @@ public class ZetTest {
     }
     @Test
     public void testEigenaarWisseltBeurtNaZet(){
-        Eigenaar eigenaar=new Eigenaar();
-        Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord();
 
-        boolean eigenaarHadBeurt=eigenaar.isEigenaarAanDeBeurt();
-        putten[0].doeZet();
-        boolean eigenaarHeeftBeurt=eigenaar.isEigenaarAanDeBeurt();
+        boolean eigenaarHadBeurt=spelbord[0].eigenaar.isEigenaarAanDeBeurt();
+        ((Put)spelbord[0]).doeZet();
+        boolean eigenaarHeeftBeurt=spelbord[0].eigenaar.isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
     }
 
     @Test
     public void testTegenstanderWisseltBeurtNaZet(){
-        Eigenaar eigenaar=new Eigenaar();
-        Put[] putten=new Put[5];
-        for(int i=0;i<5;i++) putten[i]=new Put(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord();
 
-        boolean tegenstanderHadBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
-        putten[0].doeZet();
-        boolean tegenstanderHeeftBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
+        boolean tegenstanderHadBeurt=spelbord[0].eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
+        ((Put)spelbord[0]).doeZet();
+        boolean tegenstanderHeeftBeurt=spelbord[0].eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
     }
     @Test
     public void testEigenaarWisseltBeurtNaZetMetKalahaErtussen(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Put(eigenaar);
-        putten[2]=new Kalaha(eigenaar);
-        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
-        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord(2);
 
-        boolean eigenaarHadBeurt=eigenaar.isEigenaarAanDeBeurt();
-        ((Put)putten[0]).doeZet();
-        boolean eigenaarHeeftBeurt=eigenaar.isEigenaarAanDeBeurt();
+        boolean eigenaarHadBeurt=spelbord[0].eigenaar.isEigenaarAanDeBeurt();
+        ((Put)spelbord[0]).doeZet();
+        boolean eigenaarHeeftBeurt=spelbord[0].eigenaar.isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(eigenaarHadBeurt,eigenaarHeeftBeurt);
     }
     @Test
     public void testTegenstanderWisseltBeurtNaZetMetKalahaErtussen(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Put(eigenaar);
-        putten[2]=new Kalaha(eigenaar);
-        putten[3]=new Put(eigenaar.vraagTegenstanderOp());
-        putten[4]=new Put(eigenaar.vraagTegenstanderOp());
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord=maakBord(2);
 
-        boolean tegenstanderHadBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
-        ((Put)putten[0]).doeZet();
-        boolean tegenstanderHeeftBeurt=eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
+        boolean tegenstanderHadBeurt=spelbord[0].eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
+        ((Put)spelbord[0]).doeZet();
+        boolean tegenstanderHeeftBeurt=spelbord[0].eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt();
 
         Assertions.assertNotEquals(tegenstanderHadBeurt,tegenstanderHeeftBeurt);
     }
 
     @Test
     public void testGeenBeurtwisselIndienLaatsteBalInEigenKalaha1(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Put(eigenaar);
-        putten[2]=new Put(eigenaar);
-        putten[3]=new Put(eigenaar);
-        putten[4]=new Kalaha(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord =maakBord(4);
 
-        ((Put)putten[0]).doeZet();
+        ((Put)spelbord[0]).doeZet();
 
-        Assertions.assertTrue(putten[4].eigenaar.isEigenaarAanDeBeurt());
+        Assertions.assertTrue(spelbord[4].eigenaar.isEigenaarAanDeBeurt());
     }
 
     @Test
     public void testGeenBeurtwisselIndienLaatsteBalInEigenKalaha2(){
-        Eigenaar eigenaar=new Eigenaar();
-        Bak[] putten=new Bak[5];
-        putten[0]=new Put(eigenaar);
-        putten[1]=new Kalaha(eigenaar);
-        putten[2]=new Put(eigenaar);
-        putten[3]=new Put(eigenaar);
-        putten[4]=new Kalaha(eigenaar);
-        for(int i=0;i<4;i++) putten[i].buurBak=putten[i+1];
+        Bak[] spelbord =maakBord(4);
 
-        ((Put)putten[0]).doeZet();
+        ((Put)spelbord[0]).doeZet();
 
-        Assertions.assertNotEquals(eigenaar.isEigenaarAanDeBeurt(),eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt());
+        Assertions.assertNotEquals(
+                spelbord[4].eigenaar.isEigenaarAanDeBeurt(),spelbord[4].eigenaar.vraagTegenstanderOp().isEigenaarAanDeBeurt()
+        );
     }
 
     @Test
@@ -177,3 +141,4 @@ public class ZetTest {
         Assertions.assertEquals(0,putten[1].vraagAantalBallenOp());
     }
 }
+

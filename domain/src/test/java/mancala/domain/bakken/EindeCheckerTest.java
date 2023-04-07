@@ -37,14 +37,7 @@ public class EindeCheckerTest {
 
     @Test
     public void testLegePutGeeftStatusVanGevuldeBuurputDoor(){
-        Bak[] speelbord=new Bak[5];
-        Eigenaar eigenaar=new Eigenaar();
-        speelbord[0]=new Put(eigenaar);
-        speelbord[1]=new Put(eigenaar);
-        speelbord[2]=new Kalaha(eigenaar);
-        speelbord[3]=new Put(eigenaar);
-        speelbord[4]=new Put(eigenaar);
-        for(int i=0;i<4;i++) speelbord[i].setBuurbak(speelbord[i+1]);
+        Bak[] speelbord=maakBord(2);
 
         ((Put)speelbord[0]).doeZet();
 

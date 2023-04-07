@@ -4,6 +4,8 @@ import mancala.domain.Eigenaar;
 
 public class Put extends Bak{
     private Put overbuurPut;
+    private Put startPut;
+    private Kalaha kalaha;
 
     public Put(Eigenaar eigenaar){
         super(eigenaar);
@@ -17,15 +19,15 @@ public class Put extends Bak{
 
     void kiesOverbuurputOok(Put overbuurput){overbuurPut=overbuurput;}
 
+    public void kiesStartPut(Put startput){startPut=startput;}
+
     public void doeZet(){
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
             int doortegevenballen=ballen;
             ballen=0;
             buurBak.ontvang(doortegevenballen);
 
-            try{
-                if(eigenaar.isSpelVoorbij()) buurBak.bepaalWinnaar();
-            } catch (NullPointerException e){}
+            if(statusChecker()) buurBak.bepaalWinnaar();
         }
     }
     void ontvang(int aantalBallen){
@@ -47,6 +49,11 @@ public class Put extends Bak{
         ballen+= overbuurPut.vraagAantalBallenOp();
         overbuurPut.ballen=0;
         ballenNaarKalaha();
+    }
+
+    private boolean statusChecker(){
+        if(eigenaar.isEigenaarAanDeBeurt()) return startPut.eindeChecker();
+        else return overbuurPut.startPut.eindeChecker();
     }
 
     public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
