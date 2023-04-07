@@ -52,7 +52,7 @@ public class Put extends Bak{
 
     boolean isSpelVoorbij(){return buurBak.isSpelVoorbij();}
 
-    public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
+    boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
     public uitkomst bepaalWinnaar(){
         if(buurBak.eigenaar==eigenaar) return buurBak.bepaalWinnaar();

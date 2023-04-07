@@ -19,7 +19,7 @@ public abstract class Bak {
 
     abstract boolean isSpelVoorbij();
 
-    public abstract boolean eindeChecker();
+    abstract boolean eindeChecker();
 
     public abstract uitkomst bepaalWinnaar();
 
