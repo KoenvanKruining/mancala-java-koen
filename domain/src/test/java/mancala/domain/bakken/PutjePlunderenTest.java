@@ -3,10 +3,6 @@ package mancala.domain.bakken;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
-import mancala.domain.bakken.*;
-import mancala.domain.bakken.Put;
-
 import static mancala.domain.Spelmaker.maakBord;
 
 public class PutjePlunderenTest {
