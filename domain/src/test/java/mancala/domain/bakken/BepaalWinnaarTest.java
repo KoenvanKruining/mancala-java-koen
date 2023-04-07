@@ -37,7 +37,7 @@ public class BepaalWinnaarTest {
         Assertions.assertEquals(Kalaha.uitkomst.GEWONNEN,speelbord[5].bepaalWinnaar());
     }
     @Test
-    public void BepaalWinnaarGeeftCorrectDoor(){
+    public void BepaalWinnaarGeeftInverteertStatusBijDoorgevenOverEigenaarswissel(){
         Bak[] speelbord=maakBord(2);
 
         ((Put)speelbord[1]).doeZet();

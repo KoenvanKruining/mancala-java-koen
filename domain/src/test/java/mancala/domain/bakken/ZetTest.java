@@ -35,7 +35,7 @@ public class ZetTest {
     }
 
     @Test
-    public void kalahaOntvangtCorrectVanEigenaar(){
+    public void kalahaHoudtEenBalVastAlsEigenaarAanZet(){
         Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
         putten[0]=new Put(eigenaar);
@@ -52,7 +52,7 @@ public class ZetTest {
 
     @ParameterizedTest
     @ValueSource(ints={2,3,4})
-    public void kalahaGeeftCorrectDoorVanEigenaar(int j){
+    public void kalahaGeeftAllesMinEenAlsVanEigenaarAanZet(int j){
         Eigenaar eigenaar=new Eigenaar();
         Bak[] putten=new Bak[5];
         putten[0]=new Put(eigenaar);
