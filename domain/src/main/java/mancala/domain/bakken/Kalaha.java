@@ -15,7 +15,6 @@ public class Kalaha extends Bak{
         } else buurBak.ontvang(aantalBallen);
     }
 
-
     void ballenNaarKalaha(int aantalBallen) {ballen+=aantalBallen;}
 
     boolean isSpelVoorbij(){return buurBak.eindeChecker();}
@@ -29,7 +28,9 @@ public class Kalaha extends Bak{
             if (ballen > eindstandTegenstander) return uitkomst.GEWONNEN;
             if (ballen == eindstandTegenstander) return uitkomst.GELIJK;
             else return uitkomst.VERLOREN;
-            } else return inverteerWinnaar(buurBak.bepaalWinnaar());
+        } else {
+            return inverteerWinnaar(buurBak.bepaalWinnaar());
+        }
     }
     int allesNaarKalaha(int aantalBallen){
         ballen+=aantalBallen;
