@@ -18,14 +18,12 @@ public class Eigenaar {
     public boolean isEigenaarAanDeBeurt(){return aanDeBeurt;}
 
     public void wisselBeurt(){
-        aanDeBeurt= !aanDeBeurt;
-        tegenstander.wisselBeurtOok();
+        aanDeBeurt= ! aanDeBeurt;
+        tegenstander.aanDeBeurt= ! tegenstander.aanDeBeurt;
     }
-    private void wisselBeurtOok(){aanDeBeurt= !aanDeBeurt;}
 
     public void beeindigSpel(){
         aanDeBeurt=false;
-        tegenstander.beeindigSpelOok();
+        tegenstander.aanDeBeurt=false;
     }
-    private void beeindigSpelOok(){aanDeBeurt=false;}
 }
