@@ -20,7 +20,7 @@ public class Kalaha extends Bak{
     boolean isSpelVoorbij(){return buurBak.eindeChecker();}
 
     boolean eindeChecker() {return true;}
-    public uitkomst bepaalWinnaar(){
+    uitkomst bepaalWinnaar(){
         if(eigenaar.isEigenaarAanDeBeurt()) {
             int eindstandTegenstander = buurBak.allesNaarKalaha();
             eigenaar.beeindigSpel();

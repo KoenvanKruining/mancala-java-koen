@@ -54,7 +54,7 @@ public class Put extends Bak{
 
     boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
-    public uitkomst bepaalWinnaar(){
+    uitkomst bepaalWinnaar(){
         if(buurBak.eigenaar==eigenaar) return buurBak.bepaalWinnaar();
         else return inverteerWinnaar(buurBak.bepaalWinnaar());
     }

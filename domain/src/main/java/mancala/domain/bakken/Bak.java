@@ -21,7 +21,7 @@ public abstract class Bak {
 
     abstract boolean eindeChecker();
 
-    public abstract uitkomst bepaalWinnaar();
+    abstract uitkomst bepaalWinnaar();
 
     uitkomst inverteerWinnaar(uitkomst buuruitkomst){
         return switch (buuruitkomst) {
