@@ -21,8 +21,6 @@ public class Spelmaker {
         for(int i=0;i<speelbord.length/2-1;i++) {
             ((Put) speelbord[i]).kiesOverbuurPut(((Put) speelbord[speelbord.length - 2 - i]));
         }
-        eigenaar.startput=((Put)speelbord[0]);
-        eigenaar.vraagTegenstanderOp().startput=((Put)speelbord[aantalputtenperspeler+1]);
 
         return speelbord;
     }

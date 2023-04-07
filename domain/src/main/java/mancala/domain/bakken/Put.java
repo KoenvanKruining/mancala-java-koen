@@ -23,9 +23,7 @@ public class Put extends Bak{
             ballen=0;
             buurBak.ontvang(doortegevenballen);
 
-            try{
-                if(eigenaar.isSpelVoorbij()) buurBak.bepaalWinnaar();
-            } catch (NullPointerException e){}
+            if(checkSpelStatus()) buurBak.bepaalWinnaar();
         }
     }
     void ontvang(int aantalBallen){
@@ -48,6 +46,13 @@ public class Put extends Bak{
         overbuurPut.ballen=0;
         ballenNaarKalaha();
     }
+
+    private boolean checkSpelStatus(){
+        if(eigenaar.isEigenaarAanDeBeurt()) return overbuurPut.isSpelVoorbij();
+        else return buurBak.isSpelVoorbij();
+    }
+
+    boolean isSpelVoorbij(){return buurBak.isSpelVoorbij();}
 
     public boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 

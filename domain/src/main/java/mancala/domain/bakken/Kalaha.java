@@ -18,6 +18,8 @@ public class Kalaha extends Bak{
 
     void ballenNaarKalaha(int aantalBallen) {ballen+=aantalBallen;}
 
+    boolean isSpelVoorbij(){return buurBak.eindeChecker();}
+
     public boolean eindeChecker() {return true;}
     public uitkomst bepaalWinnaar(){
         if(eigenaar.isEigenaarAanDeBeurt()) {

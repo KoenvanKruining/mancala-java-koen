@@ -17,6 +17,8 @@ public abstract class Bak {
 
     abstract void ballenNaarKalaha(int ballen);
 
+    abstract boolean isSpelVoorbij();
+
     public abstract boolean eindeChecker();
 
     public abstract uitkomst bepaalWinnaar();
