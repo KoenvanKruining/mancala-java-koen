@@ -9,9 +9,10 @@ public class Spelmaker {
 
         for(int i=0;i<speelbord.length;i++) {
             if(i%(aantalputtenperspeler+1)==aantalputtenperspeler){
-                speelbord[i] = new Kalaha(eigenaar);
+                Kalaha kalaha=new Kalaha(eigenaar);
+                speelbord[i] = kalaha;
                 for(int j=i-aantalputtenperspeler;j<i;j++){
-                    ((Put)speelbord[j]).kiesKalaha((Kalaha) speelbord[i]);
+                    ((Put)speelbord[j]).kiesKalaha(kalaha);
                 }
                 eigenaar=eigenaar.vraagTegenstanderOp();
             }
@@ -25,7 +26,7 @@ public class Spelmaker {
         speelbord[speelbord.length-1].setBuurbak(speelbord[0]);
 
         for(int i=0;i<speelbord.length/2-1;i++) {
-            ((Put) speelbord[i]).kiesOverbuurPut(((Put) speelbord[speelbord.length - 2 - i]));
+            ((Put) speelbord[i]).kiesOverbuurPut((Put) speelbord[speelbord.length - 2 - i]);
         }
 
         return speelbord;
