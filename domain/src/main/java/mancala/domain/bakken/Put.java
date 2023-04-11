@@ -49,15 +49,12 @@ public class Put extends Bak{
             eigenaar.wisselBeurt();
         }
     }
-    void ballenNaarKalaha(){
-        kalaha.ballen+=ballen;
-        ballen=0;
-    }
 
     private void putjePlunderen(){
         ballen+= overbuurPut.vraagAantalBallenOp();
         overbuurPut.ballen=0;
-        ballenNaarKalaha();
+        kalaha.ballen+=ballen;
+        ballen=0;
     }
 
     private boolean statusChecker(){
