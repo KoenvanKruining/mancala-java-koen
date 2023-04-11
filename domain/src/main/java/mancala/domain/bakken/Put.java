@@ -7,9 +7,16 @@ public class Put extends Bak{
     private Put startPut;
     private Kalaha kalaha;
 
+    public Put(Eigenaar eigenaar,Put startput){
+        super(eigenaar);
+        ballen=4;
+        if(startput==null) startPut=this;
+        else startPut=startput;
+    }
     public Put(Eigenaar eigenaar){
         super(eigenaar);
         ballen=4;
+        startPut=this;
     }
 
     public void kiesOverbuurPut(Put overbuurput){
@@ -17,7 +24,6 @@ public class Put extends Bak{
         overbuurput.overbuurPut=this;
     }
 
-    public void kiesStartPut(Put startput){startPut=startput;}
     public void kiesKalaha(Kalaha eigenKalaha){kalaha=eigenKalaha;}
 
     public void doeZet(){

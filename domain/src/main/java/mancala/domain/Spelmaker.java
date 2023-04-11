@@ -17,8 +17,7 @@ public class Spelmaker {
                 eigenaar=eigenaar.vraagTegenstanderOp();
             }
             else {
-                speelbord[i] = new Put(eigenaar);
-                ((Put)speelbord[i]).kiesStartPut((Put) speelbord[i-i %(aantalputtenperspeler+1)]);
+                speelbord[i] = new Put(eigenaar,(Put) speelbord[i-i %(aantalputtenperspeler+1)]);
             }
 
             if(i>0) speelbord[i-1].setBuurbak(speelbord[i]);
