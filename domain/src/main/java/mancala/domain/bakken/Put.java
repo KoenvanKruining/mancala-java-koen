@@ -4,7 +4,7 @@ import mancala.domain.Eigenaar;
 
 public class Put extends Bak{
     private Put overbuurPut;
-    private Put startPut;
+    private final Put startPut;
     private Kalaha kalaha;
 
     public Put(Eigenaar eigenaar,Put startput){
@@ -70,7 +70,5 @@ public class Put extends Bak{
         ballen=0;
         return buurBak.allesNaarKalaha(doortegevenballen+aantalBallen);
     }
-    int allesNaarKalaha(){
-        return allesNaarKalaha(0);
-    }
+    int allesNaarKalaha(){return allesNaarKalaha(0);}
 }
