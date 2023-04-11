@@ -4,9 +4,7 @@ import mancala.domain.Eigenaar;
 
 public class Kalaha extends Bak{
 
-    public Kalaha(Eigenaar eigenaar) {
-        super(eigenaar);
-    }
+    public Kalaha(Eigenaar eigenaar) {super(eigenaar);}
 
     void ontvang(int aantalBallen){
         if(eigenaar.isEigenaarAanDeBeurt()) {
@@ -14,8 +12,6 @@ public class Kalaha extends Bak{
             if (aantalBallen > 1) buurBak.ontvang(aantalBallen - 1);
         } else buurBak.ontvang(aantalBallen);
     }
-
-    void ballenNaarKalaha(int aantalBallen) {ballen+=aantalBallen;}
 
     boolean eindeChecker() {return true;}
     uitkomst bepaalWinnaar(){
