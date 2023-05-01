@@ -3,7 +3,7 @@ package mancala.domain;
 import mancala.domain.bakken.*;
 
 public class Spelmaker {
-    public static Bak[] maakBord(int aantalputtenperspeler){
+    public static Bak[] maakBord(int aantalputtenperspeler, int aantalballenperput){
         Bak[] speelbord =new Bak[2*aantalputtenperspeler +2];
         Eigenaar eigenaar=new Eigenaar();
 
@@ -17,7 +17,7 @@ public class Spelmaker {
                 eigenaar=eigenaar.vraagTegenstanderOp();
             }
             else {
-                speelbord[i] = new Put(eigenaar,(Put) speelbord[i-i %(aantalputtenperspeler+1)]);
+                speelbord[i] = new Put(eigenaar,aantalballenperput,(Put) speelbord[i-i %(aantalputtenperspeler+1)]);
             }
 
             if(i>0) speelbord[i-1].setBuurbak(speelbord[i]);
@@ -30,5 +30,6 @@ public class Spelmaker {
 
         return speelbord;
     }
-    public static Bak[] maakBord() {return maakBord(6);}
+    public static Bak[] maakBord(int aantalputtenperspeler) {return maakBord(aantalputtenperspeler,4);}
+    public static Bak[] maakBord() {return maakBord(6,4);}
 }

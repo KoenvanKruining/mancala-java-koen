@@ -7,6 +7,13 @@ public class Put extends Bak{
     private final Put startPut;
     private Kalaha kalaha;
 
+    public Put(Eigenaar eigenaar,int aantalballenperput,Put startput){
+        super(eigenaar);
+        ballen=aantalballenperput;
+        if(startput==null) startPut=this;
+        else startPut=startput;
+    }
+
     public Put(Eigenaar eigenaar,Put startput){
         super(eigenaar);
         ballen=4;
