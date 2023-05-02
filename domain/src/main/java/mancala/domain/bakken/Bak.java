@@ -6,7 +6,7 @@ public abstract class Bak {
     enum uitkomst{GEWONNEN,VERLOREN,GELIJK}
     int ballen;
     Bak buurBak;
-    final Eigenaar eigenaar;
+    public final Eigenaar eigenaar;
 
     public Bak(Eigenaar eigenaar){this.eigenaar=eigenaar;}
     public void setBuurbak(Bak buur){buurBak=buur;}
