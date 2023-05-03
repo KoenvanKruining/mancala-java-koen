@@ -33,19 +33,20 @@ public class Put extends Bak{
 
     public void kiesKalaha(Kalaha eigenKalaha){kalaha=eigenKalaha;}
 
-    public void doeZet(){
+    public uitkomst doeZet(){
+        uitkomst status=uitkomst.SPELEND;
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
             int doortegevenballen=ballen;
             ballen=0;
             buurBak.ontvang(doortegevenballen);
 
             if(statusChecker()) {
-                if(eigenaar.isEigenaarAanDeBeurt()) kalaha.bepaalWinnaar();
+                if(eigenaar.isEigenaarAanDeBeurt()) status=kalaha.bepaalWinnaar();
                 else {
-                    inverteerWinnaar(overbuurPut.kalaha.bepaalWinnaar());
+                    status=inverteerWinnaar(overbuurPut.kalaha.bepaalWinnaar());
                 }
-            }
-        }
+           }
+        } return status;
     }
     void ontvang(int aantalBallen){
         ballen+=1;

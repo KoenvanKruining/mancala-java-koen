@@ -3,7 +3,7 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public abstract class Bak {
-    enum uitkomst{GEWONNEN,VERLOREN,GELIJK}
+    public enum uitkomst{SPELEND,GEWONNEN,VERLOREN,GELIJK}
     int ballen;
     Bak buurBak;
     public final Eigenaar eigenaar;
@@ -25,7 +25,10 @@ public abstract class Bak {
                 yield uitkomst.VERLOREN;
             case GELIJK:
                 yield uitkomst.GELIJK;
+            case SPELEND:
+                yield uitkomst.SPELEND;
         };
+
     }
 
     abstract int allesNaarKalaha();
