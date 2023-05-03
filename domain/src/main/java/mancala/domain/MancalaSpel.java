@@ -36,7 +36,7 @@ public class MancalaSpel implements Playable {
         if(spelernaam==speler1) {
             return spelbord[0].eigenaar.isEigenaarAanDeBeurt();
         } else if(spelernaam==speler2){
-            return spelbord[7].eigenaar.isEigenaarAanDeBeurt();
+            return spelbord[spelbord.length/2].eigenaar.isEigenaarAanDeBeurt();
         } else return false;
     }
 
@@ -45,11 +45,10 @@ public class MancalaSpel implements Playable {
         if(status!=Bak.uitkomst.SPELEND) {
             iseindespel=true;
             if (status == Bak.uitkomst.GELIJK) {winner = DRAW;}
-            else if ((status == Bak.uitkomst.GEWONNEN && index < 7)||(status == Bak.uitkomst.VERLOREN && index >= 7)) {
-                winner= PLAYER_1;
-            } else if ((status == Bak.uitkomst.VERLOREN && index < 7)||(status == Bak.uitkomst.GEWONNEN && index >= 7)) {
-                winner= PLAYER_2;
-            }
+            else if (
+                (status == Bak.uitkomst.GEWONNEN && index < spelbord.length/2)||(status == Bak.uitkomst.VERLOREN && index >= spelbord.length/2)
+            ) {winner= PLAYER_1;}
+            else winner= PLAYER_2;
         }
     }
 

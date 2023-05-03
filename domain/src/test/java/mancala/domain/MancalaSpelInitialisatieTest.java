@@ -22,15 +22,41 @@ public class MancalaSpelInitialisatieTest {
 
     @ParameterizedTest
     @ValueSource(ints={0,1,2,3,4,5,7,8,9,10,11,12})
-    public void PuttenStartenMet4Ballen(int i){
+    public void PuttenStartenMet4Ballen1(int i){
         Playable spel=new MancalaSpel("Rick", "Viviyan");
         Assertions.assertEquals(4,spel.getStonesForPit(i));
     }
 
     @ParameterizedTest
+    @ValueSource(ints={0,1,3,4})
+    public void PuttenStartenMet4Ballen2(int i){
+        Playable spel=new MancalaSpel("Rick", "Viviyan",2);
+        Assertions.assertEquals(4,spel.getStonesForPit(i));
+    }
+    @ParameterizedTest
+    @ValueSource(ints={0,1,3,4})
+    public void PuttenStartenMetOpgegevenAantalBallen2(int i){
+        Playable spel=new MancalaSpel("Rick", "Viviyan",2,2);
+        Assertions.assertEquals(2,spel.getStonesForPit(i));
+    }
+    @ParameterizedTest
     @ValueSource(ints={6,13})
-    public void KalahasStartenMet0Ballen(int i){
+    public void KalahasStartenMet0Ballen1(int i){
         Playable spel=new MancalaSpel("Rick", "Viviyan");
+        Assertions.assertEquals(0,spel.getStonesForPit(i));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints={2,5})
+    public void KalahasStartenMet0Ballen2(int i){
+        Playable spel=new MancalaSpel("Rick", "Viviyan",2);
+        Assertions.assertEquals(0,spel.getStonesForPit(i));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints={2,5})
+    public void KalahasStartenMet0Ballen3(int i){
+        Playable spel=new MancalaSpel("Rick", "Viviyan",2,2);
         Assertions.assertEquals(0,spel.getStonesForPit(i));
     }
 }
