@@ -1,1 +1,21 @@
-/** Add some styles */
+.main-content {
+    padding: 25px 16px;
+    display: grid;
+    justify-content: center;
+    column-gap: 1em;
+    row-gap: 7px;
+}
+
+.side {
+    padding: 25px 16px;
+    display: flex;
+    width: 30rem;
+    justify-content: center;
+    column-gap: 1em;
+    row-gap: 7px;
+}
+
+.pit{
+    display: grid;
+    padding: 10px;
+}
