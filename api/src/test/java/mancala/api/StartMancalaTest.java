@@ -82,6 +82,8 @@ public class StartMancalaTest {
         var input = new PlayerInputDTO();
         input.setNameplayer1(namePlayer1);
         input.setNameplayer2(namePlayer2);
+        input.setPits(6);
+        input.setBalls(4);
         return input;
     }
 }
