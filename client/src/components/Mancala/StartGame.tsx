@@ -29,34 +29,39 @@ export function StartGame({ setGameState }: StartGameProps) {
       setErrorMessage("Each player should have a unique name");
       return;
     }
-    setErrorMessage("");
     const numberOfPits=Math.max(Math.floor(Number(pitsPerPlayer)),1)
     const numberOfBalls=Math.max(Math.floor(Number(ballsPerPit)),1)
-    try {
-      const response = await fetch("mancala/api/start", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nameplayer1: playerOne,
-          nameplayer2: playerTwo,
-          pits: numberOfPits,
-          balls: numberOfBalls
-        }),
-      });
-
-      if (response.ok) {
-        const gameState = await response.json();
-        setGameState(gameState);
-      } else {
-        console.error(response.statusText);
+    if(pitsPerPlayer && numberOfPits){
+      try {
+        const response = await fetch("mancala/api/start", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nameplayer1: playerOne,
+            nameplayer2: playerTwo,
+            pits: numberOfPits,
+            balls: numberOfBalls
+          }),
+        });
+      
+        if (response.ok) {
+          const gameState = await response.json();
+          setGameState(gameState);
+        } else {
+          console.error(response.statusText);
+        }
+      } catch (error) {
+        console.error(error);
       }
-    } catch (error) {
-      console.error(error);
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Please enter only numbers for the number of pits per player and the number of starting balls per pit")
     }
   }
+
 
   return (
     <>
@@ -75,12 +80,14 @@ export function StartGame({ setGameState }: StartGameProps) {
       <input
         value={pitsPerPlayer}
         placeholder="Number of pits per player"
+        type="number"
         onChange={(e) => setPitsPerPlayer(e.target.value)}
       />
 
       <input
         value={ballsPerPit}
         placeholder="Number of balls per pit"
+        type="number"
         onChange={(e) => setBallsPerPit(e.target.value)}
       />
 
