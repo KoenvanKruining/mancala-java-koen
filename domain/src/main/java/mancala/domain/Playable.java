@@ -2,7 +2,7 @@ package mancala.domain;
 
 public interface Playable {
 
-	public enum Winner {
+	enum Winner {
 		NO_ONE,
 		PLAYER_1,
 		PLAYER_2,
@@ -26,8 +26,8 @@ public interface Playable {
 	/**
 	 * Method indicating if the first player has the next turn or not.
 	 * 
-	 * @param The player which you want to know the turn for.
-	 * @return True if the player has the turn. False if it's the turn of the other
+	 * param The player which you want to know the turn for.
+	 * return True if the player has the turn. False if it's the turn of the other
 	 *         player.
 	 */
 	boolean isPlayersTurn(String name);
