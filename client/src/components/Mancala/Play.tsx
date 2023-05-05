@@ -31,12 +31,12 @@ export function Play({ gameState, setGameState }: PlayProps) {
 
   function Bak(props: {pit: Pit, player: Player}){
     if(props.pit.index % props.player.pits.length == props.player.pits.length-1){return(
-      <div>{props.pit.nrOfStones}</div>
+      <div className="bak">{props.pit.nrOfStones}</div>
     )} else if(props.player.hasTurn && props.pit.nrOfStones!=0){ return(
-      <div>{props.pit.nrOfStones}
+      <div className="bak"><div>{props.pit.nrOfStones}</div>
       <button onClick={()=>playPit(props.pit.index)}>Play pit</button></div>
     )} else {return(
-      <div>{props.pit.nrOfStones}</div>
+      <div className="bak">{props.pit.nrOfStones}</div>
     )}
     
   }
@@ -48,12 +48,14 @@ export function Play({ gameState, setGameState }: PlayProps) {
   }
   
   return (
-    <div>
+    <div className="playField">
       <p>
         {gameState.players[0].name} vs {gameState.players[1].name}
       </p>
-      <div className="side">{gameState.players[0].pits.map((pit)=><Bak pit={pit} player={gameState.players[0]}></Bak>)}</div>
-      <div className="side">{gameState.players[1].pits.map((pit)=><Bak pit={pit} player={gameState.players[1]}></Bak>)}</div>
+      <div className="board">
+        <div className="side" id="firstSide">{gameState.players[0].pits.map((pit)=><Bak pit={pit} player={gameState.players[0]}></Bak>)}</div>
+        <div className="side" id="secondSide">{gameState.players[1].pits.map((pit)=><Bak pit={pit} player={gameState.players[1]}></Bak>)}</div>
+      </div>
       {showWinner(gameState)}
     </div>
   )
