@@ -7,15 +7,18 @@ public class PlayerDTO {
 	public String name;
 	public String type;
 	public boolean hasTurn;
-	public PitDTO[] pits = new PitDTO[7];
+	public PitDTO[] pits;
 
 	public PlayerDTO(
 			Playable mancala,
 			String name) {
 		this.name = name;
 		this.hasTurn = mancala.isPlayersTurn(name);
-		int firstHoleIndex = this.name == mancala.getNameOfPlayerOne() ? 0 : 7;
-		for (int i = 0; i < 7; ++i) {
+		int numberOfPits=mancala.getPitsPerPlayer();
+		this.pits= new PitDTO[numberOfPits];
+
+		int firstHoleIndex = this.name == mancala.getNameOfPlayerOne() ? 0 : numberOfPits;
+		for (int i = 0; i < numberOfPits; ++i) {
 			this.pits[i] = new PitDTO(
 					firstHoleIndex + i,
 					mancala.getStonesForPit(i + firstHoleIndex));

@@ -32,6 +32,8 @@ public class MancalaSpel implements Playable {
 
     public String getNameOfPlayerTwo() {return speler2;}
 
+    public int getPitsPerPlayer() {return spelbord.length/2;}
+
     public boolean isPlayersTurn(String spelernaam) {
         if(spelernaam==speler1) {
             return spelbord[0].eigenaar.isEigenaarAanDeBeurt();

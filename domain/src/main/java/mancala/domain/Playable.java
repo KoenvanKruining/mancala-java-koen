@@ -32,6 +32,8 @@ public interface Playable {
 	 */
 	boolean isPlayersTurn(String name);
 
+	int getPitsPerPlayer();
+
 	/**
 	 * Method for playing the specified recess. Index is as specified below:
 	 * 
