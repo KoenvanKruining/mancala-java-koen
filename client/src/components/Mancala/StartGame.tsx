@@ -13,6 +13,8 @@ export function StartGame({ setGameState }: StartGameProps) {
   const [errorMessage, setErrorMessage] = useState("");
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
+  const [pitsPerPlayer,setPitsPerPlayer]= useState("6")
+  const [ballsPerPit,setBallsPerPit]= useState("4")
 
   async function tryStartGame() {
     if (!playerOne) {
@@ -28,7 +30,8 @@ export function StartGame({ setGameState }: StartGameProps) {
       return;
     }
     setErrorMessage("");
-
+    const numberOfPits=Math.max(Math.floor(Number(pitsPerPlayer)),1)
+    const numberOfBalls=Math.max(Math.floor(Number(ballsPerPit)),1)
     try {
       const response = await fetch("mancala/api/start", {
         method: "POST",
@@ -39,6 +42,8 @@ export function StartGame({ setGameState }: StartGameProps) {
         body: JSON.stringify({
           nameplayer1: playerOne,
           nameplayer2: playerTwo,
+          pits: numberOfPits,
+          balls: numberOfBalls
         }),
       });
 
@@ -65,6 +70,18 @@ export function StartGame({ setGameState }: StartGameProps) {
         value={playerTwo}
         placeholder="Player 2 name"
         onChange={(e) => setPlayerTwo(e.target.value)}
+      />
+
+      <input
+        value={pitsPerPlayer}
+        placeholder="Number of pits per player"
+        onChange={(e) => setPitsPerPlayer(e.target.value)}
+      />
+
+      <input
+        value={ballsPerPit}
+        placeholder="Number of balls per pit"
+        onChange={(e) => setBallsPerPit(e.target.value)}
       />
 
       <p className="errorMessage">{errorMessage}</p>
