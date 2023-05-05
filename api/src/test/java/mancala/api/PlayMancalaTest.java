@@ -6,14 +6,13 @@ import jakarta.servlet.http.*;
 import jakarta.ws.rs.core.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import mancala.api.models.*;
 import mancala.domain.MancalaSpel;
-
-import java.sql.Array;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -52,8 +51,8 @@ public class PlayMancalaTest {
         int[] expectedPitsRick={0,5,5,5,5,4,0};
         int[] expectedPitsViviyan={4,4,4,4,4,4,0};
 
-        assertTrue(Arrays.equals(expectedPitsRick,pitsRick));
-        assertTrue(Arrays.equals(expectedPitsViviyan,pitsViviyan));
+        assertArrayEquals(expectedPitsRick,pitsRick);
+        assertArrayEquals(expectedPitsViviyan,pitsViviyan);
     }
 
     @Test
