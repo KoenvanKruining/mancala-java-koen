@@ -40,6 +40,12 @@ export function Play({ gameState, setGameState }: PlayProps) {
     )}
     
   }
+
+  function showWinner(gameState: GameState){
+    if(gameState.gameStatus.endOfGame){return(<p>
+      {gameState.gameStatus.winner} wins!
+      </p>)}
+  }
   
   return (
     <div>
@@ -48,6 +54,7 @@ export function Play({ gameState, setGameState }: PlayProps) {
       </p>
       <div className="side">{gameState.players[0].pits.map((pit)=><Bak pit={pit} player={gameState.players[0]}></Bak>)}</div>
       <div className="side">{gameState.players[1].pits.map((pit)=><Bak pit={pit} player={gameState.players[1]}></Bak>)}</div>
+      {showWinner(gameState)}
     </div>
   )
 }
