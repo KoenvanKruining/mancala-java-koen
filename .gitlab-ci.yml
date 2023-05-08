@@ -2,6 +2,7 @@ image: gradle:latest
 
 stages:
   - sample-stage
+  - test-stage
 
 sample-job:
   stage: sample-stage
