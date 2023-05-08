@@ -1,0 +1,9 @@
+image :windows
+
+stages:
+  -sample-stage
+
+sample-job:
+  stage: sample-stage
+  script:
+    -echo "Hello World!"
