@@ -1,7 +1,7 @@
 image: windows
 
 stages:
-  -sample-stage
+  - sample-stage
 
 sample-job:
   stage: sample-stage
