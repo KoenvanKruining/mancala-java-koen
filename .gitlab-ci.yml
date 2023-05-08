@@ -1,10 +1,13 @@
 image: gradle:latest
 
 stages:
-  - sample-stage
-  - test-stage
+  - build
+  - test
 
-sample-job:
-  stage: sample-stage
-  script:
-    - echo "Hello World!"
+build:
+  stage: build
+  script: gradle clean build
+
+test:
+  stage: test
+  script: ./gradlew test
