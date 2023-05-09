@@ -13,7 +13,7 @@ public class SpelmakerMaaktBakkenTest {
         Assertions.assertEquals(14,Spelmaker.maakBord().length);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="testAlleBakkenBestaan[{index}]")
     @ValueSource(ints={0,1,2,3,4,5,6,7,8,9,10,11,12,13})
     public void testAlleBakkenBestaan(int i){
         Bak[] speelbord=Spelmaker.maakBord();
@@ -31,7 +31,7 @@ public class SpelmakerMaaktBakkenTest {
         Assertions.assertInstanceOf(Kalaha.class,speelbord[i+7]);
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="testBeideSpeelhelftenZijnGelijk[{index}]")
     @ValueSource(ints={0,1,2,3,4,5,6})
     public void testBeideSpeelhelftenZijnGelijk(int i){
         Bak[] speelbord=Spelmaker.maakBord();
