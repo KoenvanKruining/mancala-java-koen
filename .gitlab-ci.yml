@@ -7,7 +7,9 @@ stages:
 test:
   stage: test
   allow_failure: true
-  script: gradle test
+  script:
+    -gradle test api
+    -gradle test domain
   artifacts:
     when: always
     reports:
