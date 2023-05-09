@@ -10,5 +10,5 @@ build:
     when: always
     reports:
       junit:
-        - "domain/build/test-results/test/TEST-mancala.domain.MancalaSpelInitialisatieTest.xml"
+        - "domain/build/test-results/test/TEST-mancala.domain.bakken.ZetTest.xml"
 
