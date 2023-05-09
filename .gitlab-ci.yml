@@ -9,4 +9,5 @@ build:
   artifacts:
     when: always
     reports:
-      junit: /**/build/test-results/test/TEST-*.xml
+      junit: api/build/test-results/test/TEST-*.xml
+             domain/build/test-results/test/TEST-*.xml
