@@ -10,6 +10,6 @@ build:
     when: always
     reports:
       junit:
-        - api/build/test-results/test/TEST-*.xml
         - domain/build/test-results/test/TEST-*.xml
+        - api/build/test-results/test/TEST-*.xml
 
