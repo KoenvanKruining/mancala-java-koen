@@ -1,15 +1,20 @@
 image: gradle:latest
 
 stages:
+  - test
   - build
 
-build:
-  stage: build
-  script: gradle clean build
+test:
+  stage: test
+  script: gradle test
   artifacts:
     when: always
     reports:
       junit:
         - domain/build/test-results/test/TEST-*.xml
         - api/build/test-results/test/TEST-*.xml
+
+build:
+  stage: build
+  script: gradle clean build
 
