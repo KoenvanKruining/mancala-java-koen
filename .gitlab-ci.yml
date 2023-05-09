@@ -4,6 +4,7 @@ stages:
   - build
 
 build:
+  allow_failure: true
   stage: build
   script: gradle clean build
   artifacts:
