@@ -20,5 +20,4 @@ dependencies {
 test {
     // For running our tests, use the test runner provided by JUnit.
     useJUnitPlatform()
-    ignoreFailures true
 }
