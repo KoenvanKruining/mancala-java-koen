@@ -2,9 +2,9 @@ image: gradle:latest
 
 stages:
   - build
+  - test
 
 build:
-  allow_failure: true
   stage: build
   script: gradle clean build
   artifacts:
@@ -13,4 +13,7 @@ build:
       junit:
         - api/build/test-results/test/TEST-*.xml
         - domain/build/test-results/test/TEST-*.xml
-
+test:
+  stage: test
+  script: gradle test
+  when: on_failure
