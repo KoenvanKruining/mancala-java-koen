@@ -1,21 +1,14 @@
 image: gradle:latest
 
 stages:
-  - test
   - build
 
-test:
-  stage: test
-  allow_failure: true
-  script:
-    -gradle test
+build:
+  stage: build
+  script: gradle clean build
   artifacts:
     when: always
     reports:
       junit:
         - api/build/test-results/test/TEST-*.xml
         - domain/build/test-results/test/TEST-*.xml
-
-build:
-  stage: build
-  script: gradle clean build
