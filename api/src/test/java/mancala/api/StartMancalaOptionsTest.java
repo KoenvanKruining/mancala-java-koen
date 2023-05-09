@@ -5,13 +5,11 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.ws.rs.core.Response;
 import mancala.api.models.MancalaDTO;
 import mancala.api.models.PlayerInputDTO;
-import mancala.domain.Playable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+
 import static org.mockito.Mockito.*;
 
 public class StartMancalaOptionsTest {
@@ -24,6 +22,26 @@ public class StartMancalaOptionsTest {
         assertEquals(0, players[0].getPits()[0].getIndex());
         assertEquals(3, players[1].getPits().length);
         assertEquals(3, players[1].getPits()[0].getIndex());
+    }
+
+    @Test
+    public void startingMancalaReturnsGivenBalls() {
+        var response = startMancala("Rick", "Viviyan");
+        var entity = (MancalaDTO) response.getEntity();
+        var players = entity.getPlayers();
+        int[] pitsRick= new int[players[0].getPits().length];
+        for(int i=0;i<players[0].getPits().length; i++){
+            pitsRick[i]=players[0].getPits()[i].nrOfStones;
+        }
+        int[] pitsViviyan= new int[players[0].getPits().length];
+        for(int i=0;i<players[1].getPits().length; i++){
+            pitsViviyan[i]=players[1].getPits()[i].nrOfStones;
+        }
+        int[] expectedPitsRick={2,2,0};
+        int[] expectedPitsViviyan={2,2,0};
+
+        assertArrayEquals(expectedPitsRick,pitsRick);
+        assertArrayEquals(expectedPitsViviyan,pitsViviyan);
     }
 
 
