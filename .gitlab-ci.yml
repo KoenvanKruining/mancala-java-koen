@@ -8,8 +8,7 @@ test:
   stage: test
   allow_failure: true
   script:
-    -gradle test api
-    -gradle test domain
+    -gradle test
   artifacts:
     when: always
     reports:
