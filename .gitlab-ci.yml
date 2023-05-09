@@ -2,7 +2,6 @@ image: gradle:latest
 
 stages:
   - build
-  - test
 
 build:
   stage: build
