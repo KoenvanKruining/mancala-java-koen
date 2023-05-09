@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import mancala.domain.Eigenaar;
-
 import static mancala.domain.Spelmaker.maakBord;
 
 
@@ -20,7 +18,7 @@ public class ZetTest {
         Assertions.assertEquals(0,spelbord[0].vraagAantalBallenOp());
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="behoudVanBallen[{index}]")
     @ValueSource(ints={1,2,3,4})
     public void behoudVanBallen(int putPositie){
         Bak[] spelbord=maakBord();
@@ -39,7 +37,7 @@ public class ZetTest {
         Assertions.assertEquals(1,spelbord[3].vraagAantalBallenOp());
     }
 
-    @ParameterizedTest
+    @ParameterizedTest(name="kalahaGeeftAllesMinEenAlsVanEigenaarAanZet[{index}]")
     @ValueSource(ints={4,5,6})
     public void kalahaGeeftAllesMinEenAlsVanEigenaarAanZet(int j){
         Bak[] spelbord=maakBord(3);

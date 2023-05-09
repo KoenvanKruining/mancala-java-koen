@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import mancala.domain.Eigenaar;
 public class AllesNaarKalahaTest {
-    @ParameterizedTest
+    @ParameterizedTest(name="testallePuttenZijnLeeg[{index}]")
     @ValueSource(ints={0,1})
     public void testallePuttenZijnLeeg(int i) {
         Eigenaar eigenaar = new Eigenaar();
