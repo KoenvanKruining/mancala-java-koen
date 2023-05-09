@@ -9,4 +9,4 @@ build:
   artifacts:
     when: always
     reports:
-      junit: /**/build/reports/tests/test/TEST-*.xml
+      junit: /**/build/test-results/test/TEST-*.xml
