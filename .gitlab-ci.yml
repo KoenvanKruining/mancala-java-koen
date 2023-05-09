@@ -1,8 +1,18 @@
 image: gradle:latest
 
 stages:
-  - build
   - test
+  - build
+
+test:
+  stage: test
+  script: gradle test
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - api/build/test-results/test/TEST-*.xml
+        - domain/build/test-results/test/TEST-*.xml
 
 build:
   stage: build
@@ -13,7 +23,3 @@ build:
       junit:
         - api/build/test-results/test/TEST-*.xml
         - domain/build/test-results/test/TEST-*.xml
-test:
-  stage: test
-  script: gradle test
-  when: on_failure
