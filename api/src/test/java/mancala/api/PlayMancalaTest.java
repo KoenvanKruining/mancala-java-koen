@@ -90,15 +90,12 @@ public class PlayMancalaTest {
     }
 
     private HttpServletRequest createRequestContext() {
-        request = mock(HttpServletRequest.class);
-        session = mock(HttpSession.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpSession session = mock(HttpSession.class);
         when(request.getSession(true)).thenReturn(session);
         when(request.getSession()).thenReturn(session);
         when(session.getAttribute("mancala")).thenReturn(new MancalaSpel("Rick","Viviyan"));
         return request;
     }
-
-    private HttpServletRequest request;
-    private HttpSession session;
 }
 
