@@ -11,27 +11,10 @@ public class GameStatusDTO {
             Playable mancala) {
         this.endOfGame = mancala.isEndOfGame();
         switch (mancala.getWinner()) {
-            case PLAYER_1:
-                this.winner = mancala.getNameOfPlayerOne();
-                break;
-            case PLAYER_2:
-                this.winner = mancala.getNameOfPlayerTwo();
-                break;
-            case DRAW:
-                this.winner = mancala.getNameOfPlayerOne()
-                        + " and "
-                        + mancala.getNameOfPlayerTwo();
-                break;
-            default:
-                this.winner = null;
+            case PLAYER_1 -> this.winner = mancala.getNameOfPlayerOne();
+            case PLAYER_2 -> this.winner = mancala.getNameOfPlayerTwo();
+            case DRAW -> this.winner = mancala.getNameOfPlayerOne()+ " and "+ mancala.getNameOfPlayerTwo();
+            default -> this.winner = null;
         }
-    }
-
-    public boolean getEndOfGame() {
-        return endOfGame;
-    }
-
-    public String getWinner() {
-        return winner;
     }
 }

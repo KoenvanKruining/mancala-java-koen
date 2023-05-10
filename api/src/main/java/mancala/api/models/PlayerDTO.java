@@ -24,16 +24,4 @@ public class PlayerDTO {
 					mancala.getStonesForPit(i + firstHoleIndex));
 		}
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public boolean getHasTurn() {
-		return hasTurn;
-	}
-
-	public PitDTO[] getPits() {
-		return pits;
-	}
 }

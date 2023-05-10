@@ -14,12 +14,4 @@ public class MancalaDTO {
         players[1] = new PlayerDTO(mancala, mancala.getNameOfPlayerTwo());
         gameStatus = new GameStatusDTO(mancala);
     }
-
-    public PlayerDTO[] getPlayers() {
-        return players;
-    }
-
-    public GameStatusDTO getGameStatus() {
-        return gameStatus;
-    }
 }

@@ -17,25 +17,25 @@ public class StartMancalaOptionsTest {
     public void startingMancalaReturnsThePits() {
         var response = startMancala("Rick", "Viviyan");
         var entity = (MancalaDTO) response.getEntity();
-        var players = entity.getPlayers();
-        assertEquals(3, players[0].getPits().length);
-        assertEquals(0, players[0].getPits()[0].getIndex());
-        assertEquals(3, players[1].getPits().length);
-        assertEquals(3, players[1].getPits()[0].getIndex());
+        var players = entity.players;
+        assertEquals(3, players[0].pits.length);
+        assertEquals(0, players[0].pits[0].index);
+        assertEquals(3, players[1].pits.length);
+        assertEquals(3, players[1].pits[0].index);
     }
 
     @Test
     public void startingMancalaReturnsGivenBalls() {
         var response = startMancala("Rick", "Viviyan");
         var entity = (MancalaDTO) response.getEntity();
-        var players = entity.getPlayers();
-        int[] pitsRick= new int[players[0].getPits().length];
-        for(int i=0;i<players[0].getPits().length; i++){
-            pitsRick[i]=players[0].getPits()[i].nrOfStones;
+        var players = entity.players;
+        int[] pitsRick= new int[players[0].pits.length];
+        for(int i=0;i<players[0].pits.length; i++){
+            pitsRick[i]=players[0].pits[i].nrOfStones;
         }
-        int[] pitsViviyan= new int[players[0].getPits().length];
-        for(int i=0;i<players[1].getPits().length; i++){
-            pitsViviyan[i]=players[1].getPits()[i].nrOfStones;
+        int[] pitsViviyan= new int[players[0].pits.length];
+        for(int i=0;i<players[1].pits.length; i++){
+            pitsViviyan[i]=players[1].pits[i].nrOfStones;
         }
         int[] expectedPitsRick={2,2,0};
         int[] expectedPitsViviyan={2,2,0};
