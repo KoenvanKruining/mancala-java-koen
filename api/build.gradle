@@ -3,6 +3,7 @@ plugins {
     id 'java'
     // This time we're building a command-line executable application.
     id 'application'
+    id 'jacoco'
 }
 
 repositories {
@@ -48,4 +49,8 @@ test {
     // Use junit platform for unit tests
     useJUnitPlatform()
     ignoreFailures true
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
 }
