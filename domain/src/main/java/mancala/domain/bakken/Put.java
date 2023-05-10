@@ -20,6 +20,12 @@ public class Put extends Bak{
         if(startput==null) startPut=this;
         else startPut=startput;
     }
+
+    public Put(Eigenaar eigenaar,int aantalballenperput){
+        super(eigenaar);
+        ballen=aantalballenperput;
+        startPut=this;
+    }
     public Put(Eigenaar eigenaar){
         super(eigenaar);
         ballen=4;
