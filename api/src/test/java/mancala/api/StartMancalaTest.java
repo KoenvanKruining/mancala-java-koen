@@ -80,10 +80,10 @@ public class StartMancalaTest {
 
     private PlayerInputDTO playerInput(String namePlayer1, String namePlayer2) {
         var input = new PlayerInputDTO();
-        input.setNameplayer1(namePlayer1);
-        input.setNameplayer2(namePlayer2);
-        input.setPits(6);
-        input.setBalls(4);
+        input.nameplayer1=namePlayer1;
+        input.nameplayer2=namePlayer2;
+        input.pits=6;
+        input.balls=4;
         return input;
     }
 }
