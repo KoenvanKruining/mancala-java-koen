@@ -1,6 +1,5 @@
 package mancala.api;
 
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 import jakarta.servlet.http.*;
 import jakarta.ws.rs.core.*;
