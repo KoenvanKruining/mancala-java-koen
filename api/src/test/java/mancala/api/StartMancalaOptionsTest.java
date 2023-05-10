@@ -55,14 +55,11 @@ public class StartMancalaOptionsTest {
     }
 
     private HttpServletRequest createRequestContext() {
-        request = mock(HttpServletRequest.class);
-        session = mock(HttpSession.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpSession session = mock(HttpSession.class);
         when(request.getSession(true)).thenReturn(session);
         return request;
     }
-
-    private HttpServletRequest request;
-    private HttpSession session;
 
     private PlayerInputDTO playerInput(String namePlayer1, String namePlayer2) {
         var input = new PlayerInputDTO();
