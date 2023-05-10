@@ -20,7 +20,7 @@ public class StartMancala {
 		HttpSession session = request.getSession(true);
 		
 		// Initialize game.
-		Playable mancala = new MancalaSpel(players.getNameplayer1(),players.getNameplayer2(), players.getPits(), players.getBalls());
+		Playable mancala = new MancalaSpel(players.nameplayer1,players.nameplayer2, players.pits, players.balls);
 
 		// Attach game to session.
 		session.setAttribute("mancala", mancala);
