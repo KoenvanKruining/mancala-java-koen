@@ -31,12 +31,18 @@ public class SpelmakerMaaktBakkenTest {
         Assertions.assertInstanceOf(Kalaha.class,speelbord[i+7]);
     }
 
-    @ParameterizedTest(name="testBeideSpeelhelftenZijnGelijk[{index}]")
-    @ValueSource(ints={0,1,2,3,4,5,6})
-    public void testBeideSpeelhelftenZijnGelijk(int i){
+    @Test
+    public void testBeideSpeelhelftenZijnGelijk(){
         Bak[] speelbord=Spelmaker.maakBord();
+        Class<?>[] speelhelft1= new Class<?>[7];
+        Class<?>[] speelhelft2= new Class<?>[7];
 
-        Assertions.assertEquals(speelbord[i].getClass(),speelbord[i+7].getClass());
+        for(int i=0; i<7; i++){
+            speelhelft1[i]=speelbord[i].getClass();
+            speelhelft2[i]=speelbord[i+7].getClass();
+        }
+
+        Assertions.assertArrayEquals(speelhelft1,speelhelft2);
     }
 
     @Test
@@ -49,5 +55,19 @@ public class SpelmakerMaaktBakkenTest {
         }
 
         Assertions.assertEquals(6,aantalPutten);
+    }
+
+    @Test
+    public void testPuttenKrijgen4BallenMee(){
+        Bak[] speelbord=Spelmaker.maakBord();
+        int[] verwachtAantalBallen=new int[14];
+        int[] aantalballenperput=new int[14];
+
+        for(int i=0;i<14;i++){
+            if(speelbord[i] instanceof Put) verwachtAantalBallen[i]=4;
+            else verwachtAantalBallen[i]=0;
+            aantalballenperput[i]= speelbord[i].vraagAantalBallenOp();        }
+
+        Assertions.assertArrayEquals(verwachtAantalBallen,aantalballenperput);
     }
 }

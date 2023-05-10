@@ -16,6 +16,14 @@ public class PutTest{
     }
 
     @Test
+    public void testNieuwePutheeftOptoioneelAantalBallen(){
+        Eigenaar eigenaar=new Eigenaar();
+        Put put=new Put(eigenaar,2,null);
+
+        Assertions.assertEquals(2,put.vraagAantalBallenOp());
+    }
+
+    @Test
     public void testOverbuurputtenHebbenVerschillendeEigenaars(){
         Bak[] speelbord=maakBord(1);
 
