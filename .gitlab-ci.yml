@@ -5,7 +5,7 @@ stages:
 
 build:
   stage: build
-  script: gradle clean build
+  script: gradle clean build --continue
   artifacts:
     when: always
     reports:

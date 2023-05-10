@@ -48,7 +48,6 @@ application {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
-    ignoreFailures true
     finalizedBy jacocoTestReport
 }
 jacocoTestReport {
