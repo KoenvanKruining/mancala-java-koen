@@ -26,12 +26,4 @@ public class GameStatusDTO {
                 this.winner = null;
         }
     }
-
-    public boolean getEndOfGame() {
-        return endOfGame;
-    }
-
-    public String getWinner() {
-        return winner;
-    }
 }

@@ -9,12 +9,4 @@ public class PitDTO {
 		this.index = index;
 		this.nrOfStones = nrOfStones;
 	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public int getNrOfStones() {
-		return nrOfStones;
-	}
 }

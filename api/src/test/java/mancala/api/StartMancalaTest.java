@@ -21,41 +21,41 @@ public class StartMancalaTest {
     public void startingMancalaReturnsAGameWithoutAWinner() {
         var response = startMancala("Mario", "Luigi");
         var entity = (MancalaDTO) response.getEntity();
-        var gameState = entity.getGameStatus();
-        assertFalse(gameState.getEndOfGame());
-        assertNull(gameState.getWinner());
+        var gameState = entity.gameStatus;
+        assertFalse(gameState.endOfGame);
+        assertNull(gameState.winner);
     }
 
     @Test
     public void startingMancalaReturnsThePlayerData() {
-        var response = startMancala("Mario", "Luigi");
+        var response = startMancala("Rick", "Viviyan");
         var entity = (MancalaDTO) response.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
         assertEquals(2, players.length);
-        assertEquals("Mario", players[0].getName());
-        assertEquals("Luigi", players[1].getName());
+        assertEquals("Rick", players[0].name);
+        assertEquals("Viviyan", players[1].name);
     }
 
     @Test
     public void startingMancalaReturnsThePits() {
-        var response = startMancala("Mario", "Luigi");
+        var response = startMancala("Rick", "Viviyan");
         var entity = (MancalaDTO) response.getEntity();
-        var players = entity.getPlayers();
-        assertEquals(7, players[0].getPits().length);
-        assertEquals(0, players[0].getPits()[0].getIndex());
-        assertEquals(7, players[1].getPits().length);
-        assertEquals(7, players[1].getPits()[0].getIndex());
+        var players = entity.players;
+        assertEquals(7, players[0].pits.length);
+        assertEquals(0, players[0].pits[0].index);
+        assertEquals(7, players[1].pits.length);
+        assertEquals(7, players[1].pits[0].index);
     }
 
     @Test
     public void startingMancalaStartsANewSession() {
-        startMancala("Mario", "Luigi");
+        startMancala("Rick", "Viviyan");
         verify(request).getSession(true);
     }
 
     @Test
     public void startingMancalaSavesTheNewGameInASession() {
-        startMancala("Mario", "Luigi");
+        startMancala("Rick", "Viviyan");
         verify(session).setAttribute(eq("mancala"), any(Playable.class));
     }
 

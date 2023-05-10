@@ -21,14 +21,14 @@ public class PlayMancalaEindeTest {
     public void playMancalaEindigtSpelAlsGeenZetMogelijkIs(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
-        var status = entity.getGameStatus();
+        var players = entity.players;
+        var status = entity.gameStatus;
 
 
-        assertFalse(players[0].getHasTurn());
-        assertFalse(players[1].getHasTurn());
-        assertTrue(status.getEndOfGame());
-        assertEquals("Rick and Viviyan",status.getWinner());
+        assertFalse(players[0].hasTurn);
+        assertFalse(players[1].hasTurn);
+        assertTrue(status.endOfGame);
+        assertEquals("Rick and Viviyan",status.winner);
 
     }
 
@@ -36,15 +36,15 @@ public class PlayMancalaEindeTest {
     public void PlayMancalaMaaktPuttenLeegAlsSpelVoorbijIs(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
 
-        int[] pitsRick= new int[players[0].getPits().length];
-        for(int i=0;i<players[0].getPits().length; i++){
-            pitsRick[i]=players[0].getPits()[i].nrOfStones;
+        int[] pitsRick= new int[players[0].pits.length];
+        for(int i=0;i<players[0].pits.length; i++){
+            pitsRick[i]=players[0].pits[i].nrOfStones;
         }
-        int[] pitsViviyan= new int[players[0].getPits().length];
-        for(int i=0;i<players[1].getPits().length; i++){
-            pitsViviyan[i]=players[1].getPits()[i].nrOfStones;
+        int[] pitsViviyan= new int[players[0].pits.length];
+        for(int i=0;i<players[1].pits.length; i++){
+            pitsViviyan[i]=players[1].pits[i].nrOfStones;
         }
         int[] expectedPitsRick={0,1};
         int[] expectedPitsViviyan={0,1};

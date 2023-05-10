@@ -28,25 +28,25 @@ public class PlayMancalaTest {
     public void playingMancalaReturnsPlayerData(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
         assertEquals(2, players.length);
-        assertEquals("Rick", players[0].getName());
-        assertEquals("Viviyan", players[1].getName());
+        assertEquals("Rick", players[0].name);
+        assertEquals("Viviyan", players[1].name);
     }
 
     @Test
     public void playMancalaPerformsMove(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
 
-        int[] pitsRick= new int[players[0].getPits().length];
-        for(int i=0;i<players[0].getPits().length; i++){
-            pitsRick[i]=players[0].getPits()[i].nrOfStones;
+        int[] pitsRick= new int[players[0].pits.length];
+        for(int i=0;i<players[0].pits.length; i++){
+            pitsRick[i]=players[0].pits[i].nrOfStones;
         }
-        int[] pitsViviyan= new int[players[0].getPits().length];
-        for(int i=0;i<players[1].getPits().length; i++){
-            pitsViviyan[i]=players[1].getPits()[i].nrOfStones;
+        int[] pitsViviyan= new int[players[0].pits.length];
+        for(int i=0;i<players[1].pits.length; i++){
+            pitsViviyan[i]=players[1].pits[i].nrOfStones;
         }
         int[] expectedPitsRick={0,5,5,5,5,4,0};
         int[] expectedPitsViviyan={4,4,4,4,4,4,0};
@@ -59,28 +59,28 @@ public class PlayMancalaTest {
     public void playMancalaSwitchesTurn(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
 
-        assertFalse(players[0].getHasTurn());
-        assertTrue(players[1].getHasTurn());
+        assertFalse(players[0].hasTurn);
+        assertTrue(players[1].hasTurn);
     }
 
     @Test
     public void playMancalaEndsInKalahaDoesNotSwitchTurn(){
         var zet=playMancala(2);
         var entity = (MancalaDTO) zet.getEntity();
-        var players = entity.getPlayers();
+        var players = entity.players;
 
-        assertTrue(players[0].getHasTurn());
-        assertFalse(players[1].getHasTurn());
+        assertTrue(players[0].hasTurn);
+        assertFalse(players[1].hasTurn);
     }
     @Test
     public void firstTurnYieldsNoWinner(){
         var zet=playMancala(0);
         var entity = (MancalaDTO) zet.getEntity();
-        var status = entity.getGameStatus();
+        var status = entity.gameStatus;
 
-        assertNull(status.getWinner());
+        assertNull(status.winner);
     }
     private Response playMancala(int input) {
         var servlet = new PlayMancala();
