@@ -10,5 +10,7 @@ build:
     when: always
     reports:
       junit: "*/build/test-results/test/TEST-*.xml"
-      jacoco:  "*/build/reports/jacoco/test/html/index.html"
+      coverage_report:
+        coverage_format: cobertura
+        path: "*/build/reports/jacoco/test/html/index/html"
 
