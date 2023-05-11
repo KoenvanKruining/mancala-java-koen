@@ -50,6 +50,19 @@ test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 }
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.83
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+            }
+        }
+    }
+}
+
 jacocoTestReport {
     dependsOn test
     reports {

@@ -23,9 +23,22 @@ test {
     useJUnitPlatform()
     finalizedBy jacocoTestReport
 }
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.83
+            }
+        }
+    }
+}
+
 jacocoTestReport {
     dependsOn test
     reports {
         xml.required = true
+        counter = 'LINE'
+        value = 'TOTALCOUNT'
     }
 }
