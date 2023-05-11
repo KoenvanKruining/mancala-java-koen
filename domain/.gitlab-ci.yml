@@ -1,7 +1,7 @@
 image: gradle:latest
 
 stages:
-  - domain_build
+  - build
 
 build:
   stage: build
