@@ -22,7 +22,27 @@ test {
     // For running our tests, use the test runner provided by JUnit.
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
 }
+
+jacocoTestCoverageVerification {
+    dependsOn test
+    violationRules {
+        rule{
+            limit {
+                minimum=0.83
+            }
+        }
+
+        rule {
+            limit {
+                minimum = 0.67
+                counter= 'BRANCH'
+            }
+        }
+    }
+}
+
 jacocoTestReport {
     dependsOn test
     reports {
