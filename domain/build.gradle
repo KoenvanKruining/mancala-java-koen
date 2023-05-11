@@ -22,15 +22,15 @@ test {
     // For running our tests, use the test runner provided by JUnit.
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
 }
 
 jacocoTestCoverageVerification {
+    dependsOn test
     violationRules {
         rule {
             limit {
                 minimum = 0.83
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
             }
         }
     }

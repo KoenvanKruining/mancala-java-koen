@@ -49,15 +49,16 @@ test {
     // Use junit platform for unit tests
     useJUnitPlatform()
     finalizedBy jacocoTestReport
+    finalizedBy jacocoTestCoverageVerification
 }
 
 jacocoTestCoverageVerification {
+    dependsOn test
     violationRules {
         rule {
             limit {
-                minimum = 0.83
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
+                minimum = 0.75
+                counter= 'BRANCH'
             }
         }
     }
