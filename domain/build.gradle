@@ -28,9 +28,16 @@ test {
 jacocoTestCoverageVerification {
     dependsOn test
     violationRules {
+        rule{
+            limit {
+                minimum=0.83
+            }
+        }
+
         rule {
             limit {
-                minimum = 0.83
+                minimum = 0.67
+                counter= 'BRANCH'
             }
         }
     }

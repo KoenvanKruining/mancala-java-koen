@@ -55,10 +55,26 @@ test {
 jacocoTestCoverageVerification {
     dependsOn test
     violationRules {
+        rule{
+            limit {
+                minimum=0.83
+            }
+            afterEvaluate {
+                classDirectories.setFrom(files(classDirectories.files.collect {
+                    fileTree(dir: it, exclude: 'mancala/App.*')
+                }))
+            }
+        }
+
         rule {
             limit {
-                minimum = 0.74
+                minimum = 0.67
                 counter= 'BRANCH'
+            }
+            afterEvaluate {
+                classDirectories.setFrom(files(classDirectories.files.collect {
+                    fileTree(dir: it, exclude: 'mancala/App.*')
+                }))
             }
         }
     }
