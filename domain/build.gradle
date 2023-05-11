@@ -29,6 +29,8 @@ jacocoTestCoverageVerification {
         rule {
             limit {
                 minimum = 0.83
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
             }
         }
     }
@@ -38,7 +40,5 @@ jacocoTestReport {
     dependsOn test
     reports {
         xml.required = true
-        counter = 'LINE'
-        value = 'TOTALCOUNT'
     }
 }
