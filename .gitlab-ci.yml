@@ -13,4 +13,3 @@ domain:
     strategy: depend
   rules:
     - changes: [domain/*]
-
