@@ -1,14 +1,25 @@
 image: gradle:latest
 
 stages:
-  - build
+  - domain_build
+  - api_build
 
 build:
-  stage: build
-  script: gradle clean build --continue
+  stage: domain_build
+  script: gradle clean domain:build --continue
   coverage: /Line Coverage.\s(\d{1,3}\.\d)%/
   artifacts:
     when: always
     reports:
       junit:
-        - "*/build/test-results/test/TEST-*.xml"
+        - "domain/build/test-results/test/TEST-*.xml"
+
+build:
+  stage: api_build
+  script: gradle clean api:build --continue
+  coverage: /Line Coverage.\s(\d{1,3}\.\d)%/
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "api/build/test-results/test/TEST-*.xml"
