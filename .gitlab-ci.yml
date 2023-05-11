@@ -1,15 +1,21 @@
 image: gradle:latest
 
-api:
-  trigger:
-    include: api/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes: [api/*]
+api-build:
+  stage: build
+  script: gradle clean api:build --continue
+  coverage: /Line Coverage.\s(\d{1,3}\.\d)%/
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "api/build/test-results/test/TEST-*.xml"
 
-domain:
-  trigger:
-    include: domain/.gitlab-ci.yml
-    strategy: depend
-  rules:
-    - changes: [domain/*]
+domain-build:
+  stage: build
+  script: gradle clean domain:build --continue
+  coverage: /Line Coverage.\s(\d{1,3}\.\d)%/
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "domain/build/test-results/test/TEST-*.xml"
