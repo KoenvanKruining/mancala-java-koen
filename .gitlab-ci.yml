@@ -6,6 +6,7 @@ stages:
 build:
   stage: build
   script: gradle clean build --continue
+  coverage: /Method Coverage.*?([0-9]{1,3})%/
   artifacts:
     when: always
     reports:
