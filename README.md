@@ -111,21 +111,6 @@ If you do so correctly, these tests should succeed, and the back-end should buil
 
 If you run the program, you will notice the build "progress" is stuck on 87% or so. That means your application is running and Gradle is waiting for it to succeed. You can ignore the progress bar when running the application; it should print some lines when it's ready.
 
-## Assignment
+## Building and deployment
 
-For the lecture, see [the drive](https://drive.google.com/drive/u/0/folders/1PvC-HS8ty3mdtSaNdR5rt5-GwL-5_LaY).
-
-The global goal is to make a web front-end to your mancala back-end. A stub has been made. In api/src/test you can find examples of how you can test the api endpoints.
-
-- Familiarise yourself with the repository. 
-- Fix the failing `api/.../StartMancalaTest` tests by doing the following:
-  - Merge your own mancala implementation into this branch OR
-  - ask the academy coaches for a working set of back-end classes (from the cupboard).
-  - Write a `MancalaGame.java` which implements the `Playable` interface by using your domain classes.
-- Now, get the servers running and make sure you can connect to both servers. 
-- Enter two names in the boxes. You should see a "TODO" screen.
-- Show the mancala game when it is started.
-- Build the API endpoint to make a move.
-- Show the winner as soon as the game is over.
-- Optionally, allow for a "revenge" option in which two players can play again.
-- Optionally, allow an ongoing game to continue after a page refresh.
+The project is configured to build the domain- and api layers separately and in parallel. Both layers are tested separately with an overview of all test results available in the pipline  report. Both layers require all unit tests to be succesful, 83.3% of all lines of codes covered and 69.4% of all branches in the code to be covered by unit tests.
