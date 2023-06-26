@@ -1,0 +1,21 @@
+image: gradle:latest
+
+api-build:
+  stage: build
+  script: gradle clean api:build --continue
+  coverage: /Line Coverage.\s\d{1,3}\.{0,1}\d{0,1}%/
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "api/build/test-results/test/TEST-*.xml"
+
+domain-build:
+  stage: build
+  script: gradle clean domain:build --continue
+  coverage: /Line Coverage.\s\d{1,3}\.{0,1}\d{0,1}%/
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "domain/build/test-results/test/TEST-*.xml"

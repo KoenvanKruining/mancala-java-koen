@@ -1,0 +1,38 @@
+.main-content {
+    padding: 25px 16px;
+    display: grid;
+    justify-content: center;
+    column-gap: 1em;
+    row-gap: 7px;
+}
+
+.playField{
+    display: grid;
+}
+
+.board{
+    display: inline-block
+}
+
+.side {
+    padding: 25px 16px;
+    display: flex;
+    justify-content: center;
+    column-gap: 1em;
+    row-gap: 7px;
+}
+
+#firstSide {
+    flex-flow: row-reverse;
+}
+
+#secondSide {
+    flex-flow: row;
+}
+
+.bak{
+    background-color: #800000;
+    display: grid;
+    text-align: center;
+    padding: 10px;
+}
