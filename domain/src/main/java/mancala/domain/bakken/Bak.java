@@ -3,10 +3,10 @@ package mancala.domain.bakken;
 import mancala.domain.Eigenaar;
 
 public abstract class Bak {
-    enum uitkomst{GEWONNEN,VERLOREN,GELIJK}
+    public enum uitkomst{SPELEND,GEWONNEN,VERLOREN,GELIJK}
     int ballen;
     Bak buurBak;
-    final Eigenaar eigenaar;
+    public final Eigenaar eigenaar;
 
     public Bak(Eigenaar eigenaar){this.eigenaar=eigenaar;}
     public void setBuurbak(Bak buur){buurBak=buur;}
@@ -15,13 +15,7 @@ public abstract class Bak {
 
     abstract void ontvang(int aantalBallen);
 
-    abstract void ballenNaarKalaha(int ballen);
-
-    abstract boolean isSpelVoorbij();
-
     abstract boolean eindeChecker();
-
-    abstract uitkomst bepaalWinnaar();
 
     uitkomst inverteerWinnaar(uitkomst buuruitkomst){
         return switch (buuruitkomst) {
@@ -31,7 +25,10 @@ public abstract class Bak {
                 yield uitkomst.VERLOREN;
             case GELIJK:
                 yield uitkomst.GELIJK;
+            case SPELEND:
+                yield uitkomst.SPELEND;
         };
+
     }
 
     abstract int allesNaarKalaha();

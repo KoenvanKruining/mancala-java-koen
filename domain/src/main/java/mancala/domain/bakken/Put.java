@@ -4,10 +4,32 @@ import mancala.domain.Eigenaar;
 
 public class Put extends Bak{
     private Put overbuurPut;
+    private final Put startPut;
+    private Kalaha kalaha;
 
+    public Put(Eigenaar eigenaar,int aantalballenperput,Put startput){
+        super(eigenaar);
+        ballen=aantalballenperput;
+        if(startput==null) startPut=this;
+        else startPut=startput;
+    }
+
+    public Put(Eigenaar eigenaar,Put startput){
+        super(eigenaar);
+        ballen=4;
+        if(startput==null) startPut=this;
+        else startPut=startput;
+    }
+
+    public Put(Eigenaar eigenaar,int aantalballenperput){
+        super(eigenaar);
+        ballen=aantalballenperput;
+        startPut=this;
+    }
     public Put(Eigenaar eigenaar){
         super(eigenaar);
         ballen=4;
+        startPut=this;
     }
 
     public void kiesOverbuurPut(Put overbuurput){
@@ -15,14 +37,22 @@ public class Put extends Bak{
         overbuurput.overbuurPut=this;
     }
 
-    public void doeZet(){
+    public void kiesKalaha(Kalaha eigenKalaha){kalaha=eigenKalaha;}
+
+    public uitkomst doeZet(){
+        uitkomst status=uitkomst.SPELEND;
         if(eigenaar.isEigenaarAanDeBeurt() && ballen>0) {
             int doortegevenballen=ballen;
             ballen=0;
             buurBak.ontvang(doortegevenballen);
 
-            if(checkSpelStatus()) buurBak.bepaalWinnaar();
-        }
+            if(statusChecker()) {
+                if(eigenaar.isEigenaarAanDeBeurt()) status=kalaha.bepaalWinnaar();
+                else {
+                    status=inverteerWinnaar(overbuurPut.kalaha.bepaalWinnaar());
+                }
+           }
+        } return status;
     }
     void ontvang(int aantalBallen){
         ballen+=1;
@@ -33,38 +63,26 @@ public class Put extends Bak{
             eigenaar.wisselBeurt();
         }
     }
-    void ballenNaarKalaha(){
-        buurBak.ballenNaarKalaha(ballen);
-        ballen=0;
-    }
-    void ballenNaarKalaha(int aantalBallen) {buurBak.ballenNaarKalaha(aantalBallen);}
 
     private void putjePlunderen(){
         ballen+= overbuurPut.vraagAantalBallenOp();
         overbuurPut.ballen=0;
-        ballenNaarKalaha();
+        kalaha.ballen+=ballen;
+        ballen=0;
     }
 
-    private boolean checkSpelStatus(){
-        if(eigenaar.isEigenaarAanDeBeurt()) return overbuurPut.isSpelVoorbij();
-        else return buurBak.isSpelVoorbij();
+    private boolean statusChecker(){
+        if(eigenaar.isEigenaarAanDeBeurt()) return startPut.eindeChecker();
+        else return overbuurPut.startPut.eindeChecker();
     }
-
-    boolean isSpelVoorbij(){return buurBak.isSpelVoorbij();}
 
     boolean eindeChecker() {return ballen==0 && buurBak.eindeChecker();}
 
-    uitkomst bepaalWinnaar(){
-        if(buurBak.eigenaar==eigenaar) return buurBak.bepaalWinnaar();
-        else return inverteerWinnaar(buurBak.bepaalWinnaar());
-    }
 
     int allesNaarKalaha(int aantalBallen){
         int doortegevenballen=ballen;
         ballen=0;
         return buurBak.allesNaarKalaha(doortegevenballen+aantalBallen);
     }
-    int allesNaarKalaha(){
-        return allesNaarKalaha(0);
-    }
+    int allesNaarKalaha(){return allesNaarKalaha(0);}
 }

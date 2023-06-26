@@ -19,7 +19,7 @@ public class Eigenaar {
 
     public void wisselBeurt(){
         aanDeBeurt= ! aanDeBeurt;
-        tegenstander.aanDeBeurt=! tegenstander.aanDeBeurt;
+        tegenstander.aanDeBeurt= ! tegenstander.aanDeBeurt;
     }
 
     public void beeindigSpel(){
